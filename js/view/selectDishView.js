@@ -11,7 +11,7 @@ var SelectDishView = function (container, model) {
 		var $img = $('<img/>').attr('src', 'images/' + allDishes[i].image);
 		var $caption = $('<div/>').addClass('caption');
 
-		var $h3 = $('<h3/>').html("<a href='previewDish.html?id=" + allDishes[i].id + "'>" + allDishes[i].name + "</a>");
+		var $h3 = $('<h3/>').html("<a href='dishdetails.html?id=" + allDishes[i].id + "'>" + allDishes[i].name + "</a>");
 		var $p = $('<p/>').html(allDishes[i].description);
 
 
