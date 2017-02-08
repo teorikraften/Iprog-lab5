@@ -2,11 +2,32 @@
 var SelectDishSidebarView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-  	this.sidebar = container.find("#guests");
   	var allGuests = model.getNumberOfGuests();
-  	//var $p = $('<p/>').html("Number of guests: " + allGuests);
-  	//var $caption = $('<div/>').addClass('caption');
-  	//$caption.append($p);
-	$(this.sidebar).append(allGuests);
+	this.sidebar = container.find("#sidebar");	
+	var $p = $('<p/>').html("My dinner");
+	var $div1 = $('<div/>').html("Number of guests: " + allGuests);
+	var $table = $('<table/>').addClass("table table-striped");
+	var $thead = $('<thead/>');
+	var $tr1 = $('<tr/>');
+	var $tr2 = $('<tr/>');
+	var $th1 = $('<th/>').html('Dish Name');
+	var $th2 = $('<th/>').html('Cost');
+	var $tbody = $('<tbody/>');
+	var $td1 = $('<td/>').html('Pending');
+	var $td2 = $('<td/>').html('0');
+	var $total = $('<p/>').attr('align', 'right').html('SEK 0.00');
+
+	this.sidebar.append($p);
+	this.sidebar.append($div1);
+	$tr1.append($th1);
+	$tr1.append($th2);
+	$thead.append($tr1);
+	$tr2.append($td1);
+	$tr2.append($td2);
+	$tbody.append($tr2);
+	$table.append($thead);
+	$table.append($tbody);
+	this.sidebar.append($table);
+	this.sidebar.append($total);
 }
  
