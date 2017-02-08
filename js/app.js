@@ -6,5 +6,6 @@ $(function() {
 	var exampleView = new ExampleView($("#exampleView"), model);
 	var selectDishView = new SelectDishView($("#container"), model);
 	var selectDishSidebarView = new SelectDishSidebarView($("#container"), model);
+	var dishInformationView = new DishInformationView($("#dishdetails"), model);
 
 });
