@@ -1,3 +1,5 @@
+$('.container').hide();
+$('.container').fadeIn(1000);
 //DinnerModel Object constructor
 var DinnerModel = function() {
  
