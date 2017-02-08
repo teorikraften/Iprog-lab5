@@ -24,6 +24,7 @@ var DishInformationView = function (container, model) {
 	container.find("#dishName").html(dish.name);
 	container.find("#image").append("<img src='images/"+dish.image+"' class='media-object img-rounded'>");
 	container.find("#desc").html(dish.description);
+	container.find("#addDish").onclick = function(){model.addDishToMenu(dishID)};
 
 	dish.ingredients.forEach(function(ingredient) {
 		container.find("#ingredients").append(
