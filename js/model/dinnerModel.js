@@ -9,13 +9,13 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
-		guests = num;
+		this.guests = num;
 	}
 
 	// should return 
 	this.getNumberOfGuests = function() {
 		//TODO Lab 2
-		return guests;
+		return this.guests;
 	}
 
 	//Returns the dish that is on the menu for selected type 
@@ -35,12 +35,26 @@ var DinnerModel = function() {
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		//TODO Lab 2
-		return menu.ingredients;
+		var ingredients = [];
+		menu.forEach(function(dish) {
+			dish.ingredients.forEach(function(ingredient) {
+				ingredients.push(ingredient);
+			});
+		});
+		return ingredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		//TODO Lab 2
+		var ingredients = getAllIngredients();
+		var price = 0;
+
+		ingredients.forEach(function(price) {
+			this.price += price;
+		});
+
+		return price*guests;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
@@ -69,7 +83,7 @@ var DinnerModel = function() {
 		//TODO Lab 2
 		var dish = getDish(id);
 		var dishIndex = menu.indexOf(dish);
-		
+
 		if(dishIndex != -1) {
 			menu.splice(dishIndex, 1);
 		}
