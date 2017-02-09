@@ -61,7 +61,7 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		//TODO Lab 2
-		var newDish = getDish(id);
+		var newDish = this.getDish(id);
 		var exists = false;
 
 		// check if dish of same type exists
@@ -81,7 +81,7 @@ var DinnerModel = function() {
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		//TODO Lab 2
-		var dish = getDish(id);
+		var dish = this.getDish(id);
 		var dishIndex = this.menu.indexOf(dish);
 
 		if(dishIndex != -1) {
