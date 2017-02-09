@@ -21,7 +21,7 @@ var DinnerModel = function() {
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 		//TODO Lab 2
-		return menu.filter(function(dish) {
+		return this.menu.filter(function(dish) {
 	  		return dish.type == type;
 	  	});	
 	}
@@ -29,14 +29,14 @@ var DinnerModel = function() {
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		//TODO Lab 2
-		return menu;
+		return this.menu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		//TODO Lab 2
 		var ingredients = [];
-		menu.forEach(function(dish) {
+		this.menu.forEach(function(dish) {
 			dish.ingredients.forEach(function(ingredient) {
 				ingredients.push(ingredient);
 			});
@@ -65,16 +65,16 @@ var DinnerModel = function() {
 		var exists = false;
 
 		// check if dish of same type exists
-		menu.forEach(function(dish) {
+		this.menu.forEach(function(dish) {
 			if(dish.type == newDish.type) {
 				exists = true;
-				var i = menu.indexOf(dish);
-				menu[i] = newDish;
+				var i = this.menu.indexOf(dish);
+				this.menu[i] = newDish;
 			}
 		});
 
 		if(!exists) {
-			menu.push(newDish);
+			this.menu.push(newDish);
 		} 
 	}
 
@@ -82,10 +82,10 @@ var DinnerModel = function() {
 	this.removeDishFromMenu = function(id) {
 		//TODO Lab 2
 		var dish = getDish(id);
-		var dishIndex = menu.indexOf(dish);
+		var dishIndex = this.menu.indexOf(dish);
 
 		if(dishIndex != -1) {
-			menu.splice(dishIndex, 1);
+			this.menu.splice(dishIndex, 1);
 		}
 	}
 
