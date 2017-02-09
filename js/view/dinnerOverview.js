@@ -52,4 +52,9 @@ var DinnerOverview = function (container, model) {
 	$panelBody.append($dishes);
 	$panelDefault.append($panelBody);
 	this.menu.append($panelDefault);
+	this.menu.append($('<button/>').attr({
+		type: "button",
+		class: "btn btn-primary btn-md pull-right",
+		style: "margin-top: 10px"
+	}).html("Print Full Recipe"));
 }
