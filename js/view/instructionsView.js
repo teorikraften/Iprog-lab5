@@ -24,13 +24,13 @@ var InstructionsView = function (container, model) {
 	menu.forEach(function(dish) {
 		$media = $("<div/>").addClass("media");
 		
-		$medialeft = $("<div/>").addClass("media-left");
+		$medialeft = $("<div/>").addClass("media-left pull-left");
 		$image = $("<img>").attr("src","images/" + dish.image);
 		$image.addClass("media-object");
 		$medialeft.append($image);
 
 		$mediabody = $("<div/>").addClass("media-body");
-		$h4 = $("<h4>").addClass("media-heading");
+		$h4 = $("<h3>").addClass("media-heading");
 		$h4.append(dish.name);
 		$mediabody.append($h4);
 		$p = $("<p/>").append(dish.description);

@@ -3,8 +3,8 @@ var SelectDishSidebarView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
   	var allGuests = model.getNumberOfGuests();
-	this.sidebar = container.find("#sidebar");	
-	var $p = $('<p/>').html("My dinner");
+	this.sidebar = container.find("#sidebar").addClass("well");	
+	var $p = $('<p/>').html("<h3>My dinner</h3>");
 	var $div1 = $('<div/>').html("Number of guests: " + allGuests);
 	var $table = $('<table/>').addClass("table table-striped");
 	var $thead = $('<thead/>');
