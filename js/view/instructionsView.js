@@ -40,7 +40,11 @@ var InstructionsView = function (container, model) {
 		$media.append($mediabody);
 
 		$panelbody.append($media);
+		$panelbody.append($("<hr/>"));
 	});
+
+	// remove last hr tag
+	$panelbody.children().last().remove();
 
 	$panel.append($panelheading);
 	$panel.append($panelbody);

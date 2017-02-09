@@ -2,6 +2,10 @@
 	border-bottom: none;
 }
 
+#sidebar {
+    height: 100%;    
+}
+
 #buttonboxback {
     width: 150px;
     height: 40px;
