@@ -2,6 +2,26 @@
 var SelectDishView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
+  	
+  	this.dishTypeSelect = container.find("#inputSelect");
+  	var $formGroup = $('<div/>').addClass("form-group");
+  	var $select = $('<select/>').addClass("form-control").attr({
+  		id: "sel1",
+  		onchange: "alert('Not implemented...yet!')"});
+  	var $option1 = $('<option/>').attr('value', '1').html("Main");
+  	var $option2 = $('<option/>').attr('id', "starterDish").html("Starter");
+  	var $option3 = $('<option/>').attr('id', "dessertDish").html("Dessert");
+
+
+  	$select.append($option1);
+  	$select.append($option2);
+  	$select.append($option3);
+  	$formGroup.append($select);
+  	this.dishTypeSelect.append($formGroup);
+
+
+
+
   	this.dishes = container.find("#dishes");
 
   	var $main = $('<div/>').addClass('row');
