@@ -8,9 +8,9 @@ var SelectDishView = function (container, model) {
   	var $select = $('<select/>').addClass("form-control").attr({
   		id: "sel1",
   		onchange: "alert('Not implemented...yet!')"});
-  	var $option1 = $('<option/>').attr('value', '1').html("Main");
-  	var $option2 = $('<option/>').attr('id', "starterDish").html("Starter");
-  	var $option3 = $('<option/>').attr('id', "dessertDish").html("Dessert");
+  	var $option1 = $('<option/>').attr('value', '1').html("Main courses");
+  	var $option2 = $('<option/>').attr('value', "2").html("Starters");
+  	var $option3 = $('<option/>').attr('value', "3").html("Desserts");
 
 
   	$select.append($option1);
@@ -58,6 +58,7 @@ var SelectDishView = function (container, model) {
 		$main.append($column);
 	}
 
+	// starters
 	var starterDishes = model.getAllDishes('starter');
 	for(var i = 0; i < starterDishes.length; i++) {
 		var $column = $('<div/>').addClass("col-md-3");
@@ -82,6 +83,7 @@ var SelectDishView = function (container, model) {
 		$starter.append($column);
 	}
 
+	// desserts
 	var desserts = model.getAllDishes('dessert');
 	for(var i = 0; i < desserts.length; i++) {
 		var $column = $('<div/>').addClass("col-md-3");
