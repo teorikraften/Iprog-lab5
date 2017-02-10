@@ -3,6 +3,9 @@ var SelectDishSidebarView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
   	var allGuests = model.getNumberOfGuests();
+  	var menu = model.getFullMenu();
+  	var menuPrice = model.getTotalMenuPrice();
+
 	this.sidebar = container.find("#sidebar").addClass("well");	
 	var $p = $('<p/>').html("<h3>My dinner</h3>");
 	var $div1 = $('<div/>').html("Number of guests: " + allGuests);
@@ -13,18 +16,27 @@ var SelectDishSidebarView = function (container, model) {
 	var $th1 = $('<th/>').html('Dish Name');
 	var $th2 = $('<th/>').html('Cost');
 	var $tbody = $('<tbody/>');
-	var $td1 = $('<td/>').html('Pending');
-	var $td2 = $('<td/>').html('0');
-	var $total = $('<p/>').attr('align', 'right').html('SEK 0.00');
+	
+	menu.forEach(function(dish) {
+		var $td = $("<tr/>");
+		$td.append($("<td/>").html(dish.name));
+		$td.append($("<td/>").html(model.getDishPrice(dish.id) + " SEK"));
+		$tbody.append($td);
+	});
+
+	//var $total = $('<p/>').attr('align', 'right').html(menuPrice + " SEK");
 
 	this.sidebar.append($p);
 	this.sidebar.append($div1);
 	$tr1.append($th1);
 	$tr1.append($th2);
 	$thead.append($tr1);
-	$tr2.append($td1);
-	$tr2.append($td2);
 	$tbody.append($tr2);
+
+	$trTotal = $("<tr/>").addClass("success");
+	$tbody.append($trTotal.append($("<td/>").html("<b>Total</b>")));
+	$tbody.append($trTotal.append($("<td/>").html("<b>" + menuPrice + " SEK</b>")));
+
 	$table.append($thead);
 	$table.append($tbody);
 	this.sidebar.append($table);
