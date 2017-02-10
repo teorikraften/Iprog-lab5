@@ -28,3 +28,35 @@
     text-decoration: none;
     text-align: center;
 }
+
+.btn {
+    background-color: #FFBB82;
+    color: black;
+    border: 2px solid #FFBB82;
+}
+
+.btn:hover {
+    background-color: #FFA458;
+    color: black;
+    border: 2px solid #FFA458;
+}
+
+* {
+    font-family: 'Pangolin', cursive;
+}
+
+.panel-default > .panel-heading {
+    background-color: #FFD582;
+}
+
+.jumbotron {
+    background-color: #FFD582;
+}
+
+body {
+    background-color: #FFF7CE;
+}
+
+.nav-tabs > li.active > a{
+background-color:  #FFF7CE
+}
