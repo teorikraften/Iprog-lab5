@@ -1,11 +1,26 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
+
  
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 	this.guests = 0;
 	this.menu = [];
+	this.observers = [];
 
+
+	// Lab 3 observable
+	this.addObserver = function(observer) {
+		// TODO: LAB3
+		this.observers.push(observer);
+	}
+
+	this.notifyObservers = function(obj) {
+		// TODO: LAB3
+		for (var i = 0; i < this.observers.length; i++) {
+			this.observers[i](this, obj);
+		}
+	}
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
