@@ -17,14 +17,18 @@ var DinnerModel = function() {
 
 	this.notifyObservers = function(obj) {
 		// TODO: LAB3
-		for (var i = 0; i < this.observers.length; i++) {
-			this.observers[i](this, obj);
-		}
+
+
+		this.observers.forEach(function(observer) {
+			observer.update(obj);
+		});
 	}
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
 		this.guests = num;
+		this.notifyObservers();
+
 	}
 
 	// should return 
@@ -91,6 +95,8 @@ var DinnerModel = function() {
 		if(!exists) {
 			this.menu.push(newDish);
 		} 
+
+		this.notifyObservers();
 	}
 
 	//Removes dish from menu
@@ -102,6 +108,8 @@ var DinnerModel = function() {
 		if(dishIndex != -1) {
 			this.menu.splice(dishIndex, 1);
 		}
+
+		this.notifyObservers();
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -360,7 +368,7 @@ var DinnerModel = function() {
 			}]
 		},{
 		'id':200,
-		'name':'Chocolat Ice cream',
+		'name':'Chocolate Ice cream',
 		'type':'dessert',
 		'image':'icecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",

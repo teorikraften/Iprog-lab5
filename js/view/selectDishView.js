@@ -1,7 +1,32 @@
 //ExampleView Object constructor
 var SelectDishView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
-  	// and/or ones that responed to interaction)
+  	// and/or ones that responed to interaction
+
+	model.addObserver(this);
+	this.update = function(obj) {
+		
+	}
+
+	$panel = $("<panel")
+
+	<div class="panel panel-default">
+  					<div class="panel-heading">
+  						<h3>SELECT DISH</h3>
+  						<br>
+  						<div class="row">
+  							<div class="col-md-4" id="search">
+		  						<div class="input-group">
+		  							<input type="text" class="form-control" placeholder="Enter key words" aria-describedby="basic-addon2">
+		  							<span class="input-group-addon" id="basic-addon2">search</span>
+								</div>
+							</div>
+							<div class="col-md-4" id="inputSelect">
+							</div>
+						</div>
+  					</div>
+  					<div class="panel-body" id="dishes"></div>
+				</div>
   	
   	this.dishTypeSelect = container.find("#inputSelect");
   	var $formGroup = $('<div/>').addClass("form-group");
@@ -41,7 +66,7 @@ var SelectDishView = function (container, model) {
 
 		var $img = $('<img/>').attr('src', 'images/' + mainDishes[i].image);
 		$img.attr('class','img-rounded img-thumbnail');
-		$img.attr('style','width:100%; height:100%');
+		$img.attr('style','width:auto; height:100%');
 		var $caption = $('<div/>').addClass('caption');
 
 		var $h3 = $('<h3/>').html("<a href='dishdetails.html?id=" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
@@ -107,5 +132,6 @@ var SelectDishView = function (container, model) {
 		$column.append($thumbnail);
 		$dessert.append($column);
 	}
+
 }
  

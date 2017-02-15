@@ -2,6 +2,12 @@
 var DinnerOverview = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
+
+	model.addObserver(this);
+	this.update = function(obj) {
+		
+	}
+
 	var allGuests = model.getNumberOfGuests();
 
 	this.menu = container.find('#menu');
@@ -57,4 +63,6 @@ var DinnerOverview = function (container, model) {
 		class: "btn btn-primary btn-md pull-right",
 		style: "margin-top: 10px"
 	}).html("Print Full Recipe"));
+
+
 }

@@ -11,6 +11,7 @@ $(function() {
 	var dinnerOverview = new DinnerOverview($("#container"), model);
 	var selectDishView = new SelectDishView($("#container"), model);
 	var selectDishSidebarView = new SelectDishSidebarView($("#container"), model);
+	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model);
 	var dishInformationView = new DishInformationView($("#dishdetails"), model);
 	
 	

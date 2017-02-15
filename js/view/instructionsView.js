@@ -3,6 +3,11 @@ var InstructionsView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 
+	model.addObserver(this);
+	this.update = function(obj) {
+		
+	}
+
 	var body = container.find("#instructions");
 
 	var guests = model.getNumberOfGuests();
