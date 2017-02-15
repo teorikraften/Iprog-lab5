@@ -9,17 +9,20 @@ $(function() {
 	//And create the needed controllers and views
 
 	// Views
-	var navBarView = new NavBarView($("#navbar-container"), model);
-	var instructionsView = new InstructionsView($("#container"), model);
+	//var navBarView = new NavBarView($("#navbar-container"), model);
 	var dinnerOverview = new DinnerOverview($("#container"), model);
+	var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model);
+	var instructionsView = new InstructionsView($("#container"), model);
+	//var dinnerOverview = new DinnerOverview($("#container"), model);
 	var selectDishView = new SelectDishView($("#content"), model);
 	var selectDishSidebarView = new SelectDishSidebarView($("#container"), model);
 	var dishInformationView = new DishInformationView($("#content"), model);
 	
 	// Controllers
-	var stateController = new StateController();
+	//var stateController = new StateController();
 	var selectDishViewController = new SelectDishViewController(selectDishView, model);
 	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model);
+	//var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model);
 	
 
 });
