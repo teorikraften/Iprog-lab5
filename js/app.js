@@ -17,6 +17,7 @@ $(function() {
 	var dishInformationView = new DishInformationView($("#content"), model);
 	
 	// Controllers
+	var stateController = new StateController();
 	var selectDishViewController = new SelectDishViewController(selectDishView, model);
 	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model);
 	
