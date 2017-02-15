@@ -84,11 +84,10 @@ var DinnerModel = function() {
 		var exists = false;
 
 		// check if dish of same type exists
-		this.menu.forEach(function(dish) {
+		this.menu.forEach(function(dish, i, menu) {
 			if(dish.type == newDish.type) {
 				exists = true;
-				var i = this.menu.indexOf(dish);
-				this.menu[i] = newDish;
+				menu[i] = newDish;
 			}
 		});
 

@@ -5,56 +5,75 @@ var SelectDishView = function (container, model) {
 
 	model.addObserver(this);
 	this.update = function(obj) {
-		
+		if(obj == 'main dish' || obj == 'starter' || obj == 'dessert') {
+			var mainDishes = model.getAllDishes(obj);
+			$main.empty();
+			for(var i = 0; i < mainDishes.length; i++) {
+				var $column = $('<div/>').addClass("col-md-3");
+				var $thumbnail = $('<div/>').addClass('thumbnail');
+
+				var $img = $('<img/>').attr('src', 'images/' + mainDishes[i].image);
+				$img.attr('class','img-rounded img-thumbnail');
+				$img.attr('style','width:auto; height:100%');
+				var $caption = $('<div/>').addClass('caption');
+
+				var $h3 = $('<h3/>').html("<a href='dishdetails.html?id=" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
+				//var $p = $('<p/>').html(allDishes[i].description);
+
+
+				$caption.append($h3);
+				//$caption.append($p);
+
+				$thumbnail.append($img);
+				$thumbnail.append($caption);
+
+				$column.append($thumbnail);
+				$main.append($column);
+			}
+		}
 	}
 
-	$panel = $("<panel")
+	var $panel = $("<div/>").addClass("panel panel-default");
+	var $panel_heading = $("<div/>").addClass("panel-heading").html("<h3>SELECT DISH</h3>");
+	var $panel_heading_row = $("<div/>").addClass("row");
+	var $panel_heading_row_col = $("<div/>").attr({class: "col-md-6", id: "search"});
+	var $panel_heading_row_col_input_grp = $("<div/>").addClass("input-group").html(
+		  							"<input type='text' class='form-control' placeholder='Enter key words'>" +
+		  							"<span class='input-group-addon'>search</span>");
 
-	<div class="panel panel-default">
-  					<div class="panel-heading">
-  						<h3>SELECT DISH</h3>
-  						<br>
-  						<div class="row">
-  							<div class="col-md-4" id="search">
-		  						<div class="input-group">
-		  							<input type="text" class="form-control" placeholder="Enter key words" aria-describedby="basic-addon2">
-		  							<span class="input-group-addon" id="basic-addon2">search</span>
-								</div>
-							</div>
-							<div class="col-md-4" id="inputSelect">
-							</div>
-						</div>
-  					</div>
-  					<div class="panel-body" id="dishes"></div>
-				</div>
+	var $dishTypeSelect = $("<div/>").attr({class: "col-md-6", id: "inputSelect"});
+	var $panel_body = $("<div/>").addClass("panel-body").attr("id", "dishes");
+
   	
-  	this.dishTypeSelect = container.find("#inputSelect");
   	var $formGroup = $('<div/>').addClass("form-group");
-  	var $select = $('<select/>').addClass("form-control").attr({
-  		id: "sel1",
-  		onchange: "alert('Not implemented...yet!')"});
-  	var $option1 = $('<option/>').attr('value', '1').html("Main courses");
-  	var $option2 = $('<option/>').attr('value', "2").html("Starters");
-  	var $option3 = $('<option/>').attr('value', "3").html("Desserts");
+  	this.$select = $('<select/>').addClass("form-control").attr({
+  		id: "sel1"});
+  	var $option1 = $('<option/>').attr('value', 'main dish').html("Main courses");
+  	var $option2 = $('<option/>').attr('value', "starter").html("Starters");
+  	var $option3 = $('<option/>').attr('value', "dessert").html("Desserts");
 
 
-  	$select.append($option1);
-  	$select.append($option2);
-  	$select.append($option3);
-  	$formGroup.append($select);
-  	this.dishTypeSelect.append($formGroup);
+  	this.$select.append($option1);
+  	this.$select.append($option2);
+  	this.$select.append($option3);
+  	$formGroup.append(this.$select);
+  	$dishTypeSelect.append($formGroup);
+  	$panel_heading_row.append($dishTypeSelect);
+
+  	$panel_heading_row_col.append($panel_heading_row_col_input_grp);
+  	$panel_heading_row.append($panel_heading_row_col);
+  	$panel_heading.append($panel_heading_row);
+  	$panel.append($panel_heading);
+  	$panel.append($panel_body);
 
 
 
 
-  	this.dishes = container.find("#dishes");
+  	this.dishes = $panel_body;
 
   	var $main = $('<div/>').addClass('row');
-  	var $starter = $('<div/>').addClass('row');
-  	var $dessert = $('<div/>').addClass('row');
   	this.dishes.append($main);
-  	this.dishes.append($starter);
-  	this.dishes.append($dessert);
+  	$panel_body.append(this.dishes);
 
 
 
@@ -83,55 +102,8 @@ var SelectDishView = function (container, model) {
 		$main.append($column);
 	}
 
-	// starters
-	var starterDishes = model.getAllDishes('starter');
-	for(var i = 0; i < starterDishes.length; i++) {
-		var $column = $('<div/>').addClass("col-md-3");
-		var $thumbnail = $('<div/>').addClass('thumbnail');
 
-		var $img = $('<img/>').attr('src', 'images/' + starterDishes[i].image);
-		$img.attr('class','img-rounded img-thumbnail');
-		$img.attr('style','width:100%; height:100%');
-		var $caption = $('<div/>').addClass('caption');
-
-		var $h3 = $('<h3/>').html("<a href='dishdetails.html?id=" + starterDishes[i].id + "'>" + starterDishes[i].name + "</a>");
-		//var $p = $('<p/>').html(allDishes[i].description);
-
-
-		$caption.append($h3);
-		//$caption.append($p);
-
-		$thumbnail.append($img);
-		$thumbnail.append($caption);
-
-		$column.append($thumbnail);
-		$starter.append($column);
-	}
-
-	// desserts
-	var desserts = model.getAllDishes('dessert');
-	for(var i = 0; i < desserts.length; i++) {
-		var $column = $('<div/>').addClass("col-md-3");
-		var $thumbnail = $('<div/>').addClass('thumbnail');
-
-		var $img = $('<img/>').attr('src', 'images/' + desserts[i].image);
-		$img.attr('class','img-rounded img-thumbnail');
-		$img.attr('style','width:100%; height:100%');
-		var $caption = $('<div/>').addClass('caption');
-
-		var $h3 = $('<h3/>').html("<a href='dishdetails.html?id=" + desserts[i].id + "'>" + desserts[i].name + "</a>");
-		//var $p = $('<p/>').html(allDishes[i].description);
-
-
-		$caption.append($h3);
-		//$caption.append($p);
-
-		$thumbnail.append($img);
-		$thumbnail.append($caption);
-
-		$column.append($thumbnail);
-		$dessert.append($column);
-	}
+	container.append($panel);
 
 }
  

@@ -7,13 +7,18 @@ $(function() {
 	model.setNumberOfGuests(3);
 	
 	//And create the needed controllers and views
+
+	// Views
+	var navBarView = new NavBarView($("#navbar-container"), model);
 	var instructionsView = new InstructionsView($("#container"), model);
 	var dinnerOverview = new DinnerOverview($("#container"), model);
-	var selectDishView = new SelectDishView($("#container"), model);
+	var selectDishView = new SelectDishView($("#content"), model);
 	var selectDishSidebarView = new SelectDishSidebarView($("#container"), model);
-	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model);
 	var dishInformationView = new DishInformationView($("#dishdetails"), model);
 	
+	// Controllers
+	var selectDishViewController = new SelectDishViewController(selectDishView, model);
+	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model);
 	
 
 });
