@@ -3,6 +3,10 @@ var SelectDishView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction
 
+  	this.emptyView = function() {
+  		container.empty();
+  	}
+
 	model.addObserver(this);
 	this.update = function(obj) {
 		if(obj == 'main dish' || obj == 'starter' || obj == 'dessert') {
@@ -17,7 +21,7 @@ var SelectDishView = function (container, model) {
 				$img.attr('style','width:auto; height:100%');
 				var $caption = $('<div/>').addClass('caption');
 
-				var $h3 = $('<h3/>').html("<a href='dishdetails.html?id=" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
+				var $h3 = $('<h3/>').html("<a href='#" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
 				//var $p = $('<p/>').html(allDishes[i].description);
 
 
@@ -88,7 +92,7 @@ var SelectDishView = function (container, model) {
 		$img.attr('style','width:auto; height:100%');
 		var $caption = $('<div/>').addClass('caption');
 
-		var $h3 = $('<h3/>').html("<a href='dishdetails.html?id=" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
+		var $h3 = $('<h3/>').html("<a class='dishclick' href='#" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
 		//var $p = $('<p/>').html(allDishes[i].description);
 
 

@@ -5,4 +5,8 @@ var SelectDishViewController = function(view, model) {
 		view.update(view.$select.val());
 	});
 
+	$(".dishclick").on("click", function() {
+		view.emptyView();
+	});
+
 }

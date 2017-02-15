@@ -10,19 +10,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
+    <!-- Our css -->
+    <link rel="stylesheet" href="css-override.css">
+
   </head>
   <body>
-	<div class="container">
-		<h1>Dinner planner</h1>
-		<div id="exampleView">
-			<div>
-				Number of guests: <span id="numberOfGuests"></span>
-			</div>
-			<div>
-          <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
-			</div>
+  
+	<div class="container" id="container">
+		<div class="page-header" id="navbar-container">
+			<h1>HOMELETTE</h1>
 		</div>
+		<div class="row-fluid">
+			<div class="col-md-3" id="sidebar"></div>
+			<div class="col-md-9" id="content"></div>
+		</div>
+		
+		
 	</div>
 
     <!-- jQuery -->
@@ -33,7 +36,18 @@
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
-	<!-- <script src="js/view/exampleViewController.js"></script> -->
+
+	<!-- views -->
+	<script src="js/view/navBarView.js"></script>
+	<script src="js/view/dishInformationView.js"></script>
+  	<script src="js/view/selectDishView.js"></script>
+  	<script src="js/view/dinnerOverview.js"></script>
+  	<script src="js/view/selectDishSidebarView.js"></script>
+  	<script src="js/view/instructionsView.js"></script>
+
+  	<!-- controllers -->
+  	<script src="js/controller/selectDishViewController.js"></script>
+  	<script src="js/controller/selectDishSidebarViewController.js"></script>
+
   </body>
 </html>

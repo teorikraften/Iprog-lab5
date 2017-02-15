@@ -14,7 +14,7 @@ $(function() {
 	var dinnerOverview = new DinnerOverview($("#container"), model);
 	var selectDishView = new SelectDishView($("#content"), model);
 	var selectDishSidebarView = new SelectDishSidebarView($("#container"), model);
-	var dishInformationView = new DishInformationView($("#dishdetails"), model);
+	var dishInformationView = new DishInformationView($("#content"), model);
 	
 	// Controllers
 	var selectDishViewController = new SelectDishViewController(selectDishView, model);

@@ -22,7 +22,7 @@ var DishInformationView = function (container, model) {
 	}
 
 	// get the dish id from the parameter passd  by url
-	var dishID = getUrlParameter('id');
+	var dishID = getUrlParameter('id') || 100;
 	var dish = model.getDish(dishID);
 
 	container.find("#dishName").html(dish.name);
