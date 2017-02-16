@@ -1,5 +1,5 @@
 // selectDistViewController
-var SelectDishSidebarViewController = function(view, model) {
+var SelectDishSidebarViewController = function(view, model, stateController) {
 	
 	view.$plusButton.click(function() {
 		model.setNumberOfGuests(model.getNumberOfGuests() + 1);
@@ -9,6 +9,11 @@ var SelectDishSidebarViewController = function(view, model) {
 	view.$minusButton.click(function() {
 		model.setNumberOfGuests(model.getNumberOfGuests() - 1);
 		console.log(model.getNumberOfGuests());
+	});
+
+	view.$checkout.click(function() {
+		stateController.hideSidebar();
+		stateController.showOverview();
 	});
 
 }

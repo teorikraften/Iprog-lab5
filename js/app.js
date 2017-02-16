@@ -9,20 +9,22 @@ $(function() {
 	//And create the needed controllers and views
 
 	// Views
-	//var navBarView = new NavBarView($("#navbar-container"), model);
-	var dinnerOverview = new DinnerOverview($("#container"), model);
-	var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model);
-	var instructionsView = new InstructionsView($("#container"), model);
-	//var dinnerOverview = new DinnerOverview($("#container"), model);
+	var navBarView = new NavBarView($("#navbar-container"), model);
+	var selectDishSidebarView = new SelectDishSidebarView($("#content"), model);
+	var dinnerOverview = new DinnerOverview($("#content"), model);
+	var instructionsView = new InstructionsView($("#content"), model);
 	var selectDishView = new SelectDishView($("#content"), model);
-	var selectDishSidebarView = new SelectDishSidebarView($("#container"), model);
 	var dishInformationView = new DishInformationView($("#content"), model);
 	
-	// Controllers
-	//var stateController = new StateController();
-	var selectDishViewController = new SelectDishViewController(selectDishView, model);
-	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model);
-	//var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model);
 	
+	// State controller
+	var stateController = new StateController(selectDishView, 
+											  selectDishSidebarView,
+											  dinnerOverview);
+	// Controllers
+	var selectDishViewController = new SelectDishViewController(selectDishView, model, stateController);
+	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model, stateController);
+	var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model, stateController);
+
 
 });

@@ -3,8 +3,12 @@ var SelectDishView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction
 
-  	this.emptyView = function() {
-  		container.empty();
+  	this.hideView = function() {
+  		$content.hide();
+  	}
+
+  	this.showView = function() {
+  		container.append($content);
   	}
 
 	model.addObserver(this);
@@ -36,6 +40,8 @@ var SelectDishView = function (container, model) {
 			}
 		}
 	}
+
+	$content = $("<div/>").addClass("col-md-9");
 
 	var $panel = $("<div/>").addClass("panel panel-default");
 	var $panel_heading = $("<div/>").addClass("panel-heading").html("<h3>SELECT DISH</h3>");
@@ -107,7 +113,8 @@ var SelectDishView = function (container, model) {
 	}
 
 
-	container.append($panel);
+	$content.append($panel);
+	container.append($content);
 
 }
  

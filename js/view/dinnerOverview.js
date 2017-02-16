@@ -3,6 +3,14 @@ var DinnerOverview = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 
+	this.hideView = function() {
+		container.hide();
+	}
+
+	this.showView = function() {
+		container.append(this.menu);
+	}
+
 	model.addObserver(this);
 
 	this.update = function(obj) {
@@ -53,7 +61,7 @@ var DinnerOverview = function (container, model) {
 	var allGuests = model.getNumberOfGuests();
 	var totalMenuPrice = model.getTotalMenuPrice();
 
-	this.menu = $('#menu');
+	this.menu = $('<div/>').addClass("col-md-12");
 	var $panelDefault = $('<div/>').addClass("panel panel-default");
 	var $panelHeading = $('<div/>').addClass("panel-heading");
 	var $panelBody = $('<div/>').addClass("panel-body");

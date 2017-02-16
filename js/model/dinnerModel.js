@@ -17,8 +17,6 @@ var DinnerModel = function() {
 
 	this.notifyObservers = function(obj) {
 		// TODO: LAB3
-
-
 		this.observers.forEach(function(observer) {
 			observer.update(obj);
 		});

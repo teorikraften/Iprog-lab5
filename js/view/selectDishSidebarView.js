@@ -3,6 +3,14 @@ var SelectDishSidebarView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 
+	this.hideView = function() {
+		this.sidebar.hide();
+	}
+
+	this.showView = function() {
+		container.append(this.sidebar);
+	}
+
 	model.addObserver(this);
 
 	this.update = function(obj) {
@@ -41,7 +49,7 @@ var SelectDishSidebarView = function (container, model) {
   		class: "btn btn-danger btn-sm",
   	}).html("<span class='glyphicon glyphicon-minus'></span>");
 
-	this.sidebar = container.find("#sidebar").addClass("well");	
+	this.sidebar = $("<div/>").addClass("col-md-3 well");	
 	var $p = $('<p/>').html("<h3>My dinner</h3> <u>Number of guests:</u> ");
 		var $inDiv = $("<div/>").addClass("input-group").attr("style", "width:60px;");
 		var $inSpanPlus = $("<span/>").addClass("input-group-btn");
@@ -94,6 +102,12 @@ var SelectDishSidebarView = function (container, model) {
 	$table.append($tbody);
 	$table.append($tfoot);
 	this.sidebar.append($table);
+
+	this.$checkout = $("<button/>").addClass("btn btn-block").html("Checkout");
+	this.$checkout.attr("id", "checkout");
+	this.sidebar.append(this.$checkout);
+
+	container.append(this.sidebar);
 
 }
  
