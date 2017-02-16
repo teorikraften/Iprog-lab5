@@ -6,8 +6,9 @@ var SelectDishViewController = function(view, model, stateController) {
 	});
 
 	$(".dishclick").on("click", function() {
-		stateController.hideSelectDish();
-		stateController.showInformation();
+		stateController.hideAll();
+		stateController.showSidebar();
+		stateController.showDishInfo($(this).attr("id"));
 	});
 
 }

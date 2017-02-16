@@ -98,7 +98,7 @@ var SelectDishView = function (container, model) {
 		$img.attr('style','width:auto; height:100%');
 		var $caption = $('<div/>').addClass('caption');
 
-		var $h3 = $('<h3/>').html("<a class='dishclick' href='#" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
+		var $h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
 		//var $p = $('<p/>').html(allDishes[i].description);
 
 

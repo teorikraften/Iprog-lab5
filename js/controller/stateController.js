@@ -1,9 +1,20 @@
-var StateController = function(selectDish, sidebar, overview, dishinfo, instructions) {
+var StateController = function(home, selectDish, sidebar, overview, dishinfo, instructions) {
 
 	this.hideAll = function() {
+		this.hideHome();
 		this.hideSidebar();
 		this.hideOverview();
 		this.hideSelectDish();
+		this.hideDishInfo();
+		this.hideInstructions();
+	}
+
+	this.hideHome = function() {
+		home.hideView();
+	}
+
+	this.showHome = function() {
+		home.showView();
 	}
 
 	this.hideSelectDish = function() {
@@ -28,6 +39,22 @@ var StateController = function(selectDish, sidebar, overview, dishinfo, instruct
 
 	this.showOverview = function() {
 		overview.showView();
+	}
+
+	this.hideDishInfo = function() {
+		dishinfo.hideView();
+	}
+
+	this.showDishInfo = function(dish) {
+		dishinfo.showView(dish);
+	}
+
+	this.hideInstructions = function() {
+		instructions.hideView();
+	}
+
+	this.showInstructions = function() {
+		instructions.showView();
 	}
 
 }

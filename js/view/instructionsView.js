@@ -3,6 +3,15 @@ var InstructionsView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 
+	this.hideView = function() {
+		this.$body.hide();
+	}
+
+	this.showView = function() {
+		this.$body.show();
+	}
+	
+
 	model.addObserver(this);
 	this.update = function(obj) {
 		guests = model.getNumberOfGuests();
@@ -35,7 +44,7 @@ var InstructionsView = function (container, model) {
 		$panelbody.children().last().remove();
 	}
 
-	var body = container.find("#instructions");
+	this.$body = $("<div/>").addClass("col-md-12");
 
 	var guests = model.getNumberOfGuests();
 	var menu = model.getFullMenu();
@@ -81,7 +90,9 @@ var InstructionsView = function (container, model) {
 	$panel.append($panelheading);
 	$panel.append($panelbody);
 
-	body.append($panel);
+	this.$body.append($panel);
+
+	container.append(this.$body);
 	
 }
  
