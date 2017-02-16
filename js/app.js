@@ -34,6 +34,7 @@ $(function() {
 	var selectDishViewController = new SelectDishViewController(selectDishView, model, stateController);
 	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model, stateController);
 	var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model, stateController);
+	var dishInformationViewController = new DishInformationViewController(dishInformationView, model, stateController);
 
 
 });

@@ -15,21 +15,21 @@ var SelectDishView = function (container, model) {
 	this.update = function(obj) {
 		if(obj == 'main dish' || obj == 'starter' || obj == 'dessert') {
 			var mainDishes = model.getAllDishes(obj);
-			$main.empty();
+			$main.detach();
+			$main = $('<div/>').addClass('row');
 			for(var i = 0; i < mainDishes.length; i++) {
-				var $column = $('<div/>').addClass("col-md-3");
+				var $column = $('<div/>').addClass("col-sm-3");
 				var $thumbnail = $('<div/>').addClass('thumbnail');
 
 				var $img = $('<img/>').attr('src', 'images/' + mainDishes[i].image);
 				$img.attr('class','img-rounded img-thumbnail');
-				$img.attr('style','width:auto; height:100%');
+				$img.attr('style','width:150px; height:150px');
 				var $caption = $('<div/>').addClass('caption');
 
-				var $h3 = $('<h3/>').html("<a href='#" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
-				//var $p = $('<p/>').html(allDishes[i].description);
+				this.$h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");				//var $p = $('<p/>').html(allDishes[i].description);
 
 
-				$caption.append($h3);
+				$caption.append(this.$h3);
 				//$caption.append($p);
 
 				$thumbnail.append($img);
@@ -39,6 +39,7 @@ var SelectDishView = function (container, model) {
 				$main.append($column);
 			}
 		}
+		this.dishes.append($main);
 	}
 
 	$content = $("<div/>").addClass("col-md-9");
@@ -90,19 +91,19 @@ var SelectDishView = function (container, model) {
   	// main dishes
   	var mainDishes = model.getAllDishes('main dish');
 	for(var i = 0; i < mainDishes.length; i++) {
-		var $column = $('<div/>').addClass("col-md-3");
+		var $column = $('<div/>').addClass("col-sm-3");
 		var $thumbnail = $('<div/>').addClass('thumbnail');
 
 		var $img = $('<img/>').attr('src', 'images/' + mainDishes[i].image);
 		$img.attr('class','img-rounded img-thumbnail');
-		$img.attr('style','width:auto; height:100%');
+		$img.attr('style','width:150px; height:150px');
 		var $caption = $('<div/>').addClass('caption');
 
-		var $h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
+		this.$h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
 		//var $p = $('<p/>').html(allDishes[i].description);
 
 
-		$caption.append($h3);
+		$caption.append(this.$h3);
 		//$caption.append($p);
 
 		$thumbnail.append($img);

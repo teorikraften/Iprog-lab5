@@ -5,7 +5,7 @@ var SelectDishViewController = function(view, model, stateController) {
 		view.update(view.$select.val());
 	});
 
-	$(".dishclick").on("click", function() {
+	$(document).on("click", ".dishclick", function() {
 		stateController.hideAll();
 		stateController.showSidebar();
 		stateController.showDishInfo($(this).attr("id"));

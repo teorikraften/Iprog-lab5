@@ -36,36 +36,44 @@ var DishInformationView = function (container, model) {
 						 "</span></li>";
 		});
 
-		this.$content.html("<div class='row well'>" + 
-							  			"<div class='col-md-7>" +
-							  				"<button type='button' class='btn btn-primary btn-lg' id='back'>Back</button>" +
-							  				"<div class='media'>" +
-							  					"<div class='media-left'>" +
-							  						"<img src='images/" + this.dish.image + "' class='media-object img-rounded'>" +
-							  					"</div>" +
-							  					"<div class='media-body'>" +
-							  						"<h3 class='media-heading'>" + this.dish.name + " for " + guests + " guests</h3>" +
-							  						"<p>" + this.dish.description + "</p>" +
-							  					"</div>" +
-							  				"</div>" +
-							  			"</div>" +
-							  			"<div class='col-md-5'>" +
-							  				"<div class='panel panel-default'>" +
-							  					"<div class='panel-heading'>Ingredients</div>" +
-							  					"<div class='panel-body>" +
-							  						"<ul class='list-group'>" +
-							  							listItems + 
-							  						"</ul>" +
-							  					"</div>" +
-							  				"</div>" +
-							  				"<button type='button' class='btn btn-primary btn-lg' id='addDish'>Add to menu</button>" +
-							  			"</div>" +
-							  		"</div>");
+		this.$row.detach();
+
+		this.$row = $("<div/>").addClass("row well").html("<div class='col-md-7>" +
+											  			  	"<button type='button' class='btn btn-primary btn-lg' id='back'>Back</button>" +
+											  				"<div class='media'>" +
+											  					"<div class='media-left'>" +
+											  						"<img src='images/" + this.dish.image + "' class='media-object img-rounded'>" +
+											  					"</div>" +
+											  					"<div class='media-body'>" +
+											  						"<h3 class='media-heading'>" + this.dish.name + " for " + guests + " guests</h3>" +
+											  						"<p>" + this.dish.description + "</p>" +
+											  					"</div>" +
+											  				"</div>" +
+											  			  "</div>");
+		this.$col5 = $("<div/>").addClass("col-md-5").html("<div class='panel panel-default'>" +
+											  					"<div class='panel-heading'>Ingredients</div>" +
+											  					"<div class='panel-body>" +
+											  						"<ul class='list-group'>" +
+											  							listItems + 
+											  						"</ul>" +
+											  					"</div>" +
+											  				"</div>");
+
+
+		//this.$col5.append(this.$button);
+		this.$col5.append(this.$button);
+		this.$row.append(this.$col5);
+		this.$content.append(this.$row);
 	}
 
 	// get the dish id from the parameter passd  by url
 	this.dishID = 100;
 	this.dish = model.getDish(this.dishID);
+	this.$button = $("<button/>").attr({type: "button",
+										class: "btn btn-primary btn-lg",
+										id: "addDish"})
+								 .html("Add to menu"); 
+
 	var guests = model.getNumberOfGuests();
 
 	var listItems = "";
@@ -77,32 +85,34 @@ var DishInformationView = function (container, model) {
 					 "</span></li>";
 	});
 
-	this.$content = $("<div/>").addClass("col-md-9")
-						  .html("<div class='row well'>" + 
-						  			"<div class='col-md-7>" +
-						  				"<button type='button' class='btn btn-primary btn-lg' id='back'>Back</button>" +
-						  				"<div class='media'>" +
-						  					"<div class='media-left'>" +
-						  						"<img src='images/" + this.dish.image + "' class='media-object img-rounded'>" +
-						  					"</div>" +
-						  					"<div class='media-body'>" +
-						  						"<h3 class='media-heading'>" + this.dish.name + " for " + guests + " guests</h3>" +
-						  						"<p>" + this.dish.description + "</p>" +
-						  					"</div>" +
-						  				"</div>" +
-						  			"</div>" +
-						  			"<div class='col-md-5'>" +
-						  				"<div class='panel panel-default'>" +
-						  					"<div class='panel-heading'>Ingredients</div>" +
-						  					"<div class='panel-body>" +
-						  						"<ul class='list-group'>" +
-						  							listItems + 
-						  						"</ul>" +
-						  					"</div>" +
-						  				"</div>" +
-						  				"<button type='button' class='btn btn-primary btn-lg' id='addDish'>Add to menu</button>" +
-						  			"</div>" +
-						  		"</div>");
+	this.$content = $("<div/>").addClass("col-md-9");
+
+	this.$row = $("<div/>").addClass("row well").html("<div class='col-md-7>" +
+										  			  	"<button type='button' class='btn btn-primary btn-lg' id='back'>Back</button>" +
+										  				"<div class='media'>" +
+										  					"<div class='media-left'>" +
+										  						"<img src='images/" + this.dish.image + "' class='media-object img-rounded'>" +
+										  					"</div>" +
+										  					"<div class='media-body'>" +
+										  						"<h3 class='media-heading'>" + this.dish.name + " for " + guests + " guests</h3>" +
+										  						"<p>" + this.dish.description + "</p>" +
+										  					"</div>" +
+										  				"</div>" +
+										  			  "</div>");
+	this.$col5 = $("<div/>").addClass("col-md-5").html("<div class='panel panel-default'>" +
+										  					"<div class='panel-heading'>Ingredients</div>" +
+										  					"<div class='panel-body>" +
+										  						"<ul class='list-group'>" +
+										  							listItems + 
+										  						"</ul>" +
+										  					"</div>" +
+										  				"</div>");
+
+
+	this.$col5.append(this.$button);
+	this.$row.append(this.$col5);
+
+	this.$content.append(this.$row);
 
 	container.append(this.$content);
 	
