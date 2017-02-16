@@ -8,7 +8,7 @@ var SelectDishView = function (container, model) {
   	}
 
   	this.showView = function() {
-  		container.append($content);
+  		$content.show();
   	}
 
 	model.addObserver(this);

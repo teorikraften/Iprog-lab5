@@ -17,6 +17,14 @@ var DishInformationView = function (container, model) {
 	    }
 	};
 
+	this.hideView = function() {
+		$content.hide();
+	}
+
+	this.showView = function() {
+		$content.show();
+	}
+
 	this.update = function(obj) {
 		
 	}
@@ -25,24 +33,43 @@ var DishInformationView = function (container, model) {
 	var dishID = getUrlParameter('id') || 100;
 	var dish = model.getDish(dishID);
 
-	container.find("#dishName").html(dish.name);
-	container.find("#image").append("<img src='images/"+dish.image+"' class='media-object img-rounded'>");
-	container.find("#desc").html(dish.description);
-	container.find("#addDish").onclick = function(){model.addDishToMenu(dishID)};
-
+	var listItems = "";
 	dish.ingredients.forEach(function(ingredient) {
-		container.find("#ingredients").append(
-			"<li class='list-group-item'>"
-				+ingredient.name+
-				"<span class='badge'>"
-				+ingredient.quantity+" "+ingredient.unit+
-			"</span></li>");
+		listItems += "<li class='list-group-item'>"
+						+ingredient.name+
+					 "<span class='badge'>"
+						+ingredient.quantity+" "+ingredient.unit+
+					 "</span></li>";
 	});
 
+	$content = $("<div/>").addClass("col-md-9")
+						  .html("<div class='row well'>" + 
+						  			"<div class='col-md-7>" +
+						  				"<button type='button' class='btn btn-primary btn-lg' id='back'>Back</button>" +
+						  				"<div class='media'>" +
+						  					"<div class='media-left'>" +
+						  						"<img src='images/" + dish.image + "' class='media-object img-rounded'>" +
+						  					"</div>" +
+						  					"<div class='media-body'>" +
+						  						"<h3 class='media-heading'>" + dish.name + "</h3>" +
+						  						"<p>" + dish.description + "</p>" +
+						  					"</div>" +
+						  				"</div>" +
+						  			"</div>" +
+						  			"<div class='col-md-5'>" +
+						  				"<div class='panel panel-default'>" +
+						  					"<div class='panel-heading'>Ingredients</div>" +
+						  					"<div class='panel-body>" +
+						  						"<ul class='list-group'>" +
+						  							listItems + 
+						  						"</ul>" +
+						  					"</div>" +
+						  				"</div>" +
+						  				"<button type='button' class='btn btn-primary btn-lg' id='addDish'>Add to menu</button>" +
+						  			"</div>" +
+						  		"</div>");
 
-
-
-
+	container.append($content);
 	
 }
  

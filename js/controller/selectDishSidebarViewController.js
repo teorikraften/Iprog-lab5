@@ -12,7 +12,7 @@ var SelectDishSidebarViewController = function(view, model, stateController) {
 	});
 
 	view.$checkout.click(function() {
-		stateController.hideSidebar();
+		stateController.hideAll();
 		stateController.showOverview();
 	});
 

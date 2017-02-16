@@ -8,7 +8,7 @@ var SelectDishSidebarView = function (container, model) {
 	}
 
 	this.showView = function() {
-		container.append(this.sidebar);
+		this.sidebar.show();
 	}
 
 	model.addObserver(this);

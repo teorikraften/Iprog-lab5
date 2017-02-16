@@ -10,17 +10,19 @@ $(function() {
 
 	// Views
 	var navBarView = new NavBarView($("#navbar-container"), model);
+	var selectDishView = new SelectDishView($("#content"), model);
 	var selectDishSidebarView = new SelectDishSidebarView($("#content"), model);
 	var dinnerOverview = new DinnerOverview($("#content"), model);
-	var instructionsView = new InstructionsView($("#content"), model);
-	var selectDishView = new SelectDishView($("#content"), model);
 	var dishInformationView = new DishInformationView($("#content"), model);
+	var instructionsView = new InstructionsView($("#content"), model);
 	
 	
 	// State controller
 	var stateController = new StateController(selectDishView, 
 											  selectDishSidebarView,
-											  dinnerOverview);
+											  dinnerOverview,
+											  dishInformationView,
+											  instructionsView);
 	// Controllers
 	var selectDishViewController = new SelectDishViewController(selectDishView, model, stateController);
 	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model, stateController);

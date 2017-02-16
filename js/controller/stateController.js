@@ -1,7 +1,9 @@
-var StateController = function(selectDish, sidebar, overview) {
+var StateController = function(selectDish, sidebar, overview, dishinfo, instructions) {
 
 	this.hideAll = function() {
-		$("#content").hide();
+		this.hideSidebar();
+		this.hideOverview();
+		this.hideSelectDish();
 	}
 
 	this.hideSelectDish = function() {

@@ -4,11 +4,11 @@ var DinnerOverview = function (container, model) {
   	// and/or ones that responed to interaction)
 
 	this.hideView = function() {
-		container.hide();
+		this.menu.hide();
 	}
 
 	this.showView = function() {
-		container.append(this.menu);
+		this.menu.show();
 	}
 
 	model.addObserver(this);
@@ -115,6 +115,8 @@ var DinnerOverview = function (container, model) {
 		class: "btn btn-primary btn-md pull-right",
 		style: "margin-top: 10px"
 	}).html("Print Full Recipe"));
+
+	container.append(this.menu);
 
 	//var totalMenuPriceUpdated = $('#totalMenuPrice');
 }

@@ -7,7 +7,7 @@ var SelectDishViewController = function(view, model, stateController) {
 
 	$(".dishclick").on("click", function() {
 		stateController.hideSelectDish();
-		stateController.showInstructions();
+		stateController.showInformation();
 	});
 
 }
