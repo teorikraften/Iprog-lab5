@@ -38,6 +38,6 @@ $(function() {
 	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model, stateController);
 	var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model, stateController);
 	var dishInformationViewController = new DishInformationViewController(dishInformationView, model, stateController);
-
+	var instructionsViewController = new InstructionsViewController(instructionsView, model, stateController);
 
 });

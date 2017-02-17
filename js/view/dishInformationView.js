@@ -36,6 +36,11 @@ var DishInformationView = function (container, model) {
 						 "</span></li>";
 		});
 
+		this.$back = $("<button/>").attr({type: "button",
+										class: "btn btn-primary btn-lg pull-right",
+										id: "back"})
+								 .html("Back");
+
 		this.$row.detach();
 		this.$row = $("<div/>").addClass("row well");
 		this.$row.append(this.$back);
