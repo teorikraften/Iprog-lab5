@@ -7,8 +7,10 @@ var SelectDishSidebarViewController = function(view, model, stateController) {
 	});
 
 	view.$minusButton.click(function() {
-		model.setNumberOfGuests(model.getNumberOfGuests() - 1);
-		console.log(model.getNumberOfGuests());
+		if(model.getNumberOfGuests() > 1) {
+			model.setNumberOfGuests(model.getNumberOfGuests() - 1);
+			console.log(model.getNumberOfGuests());
+		}
 	});
 
 	view.$checkout.click(function() {
