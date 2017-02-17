@@ -1,8 +1,8 @@
 // instructionsViewController
-var InstructionsViewController = function(view, model) {
+var InstructionsViewController = function(view, model, stateController) {
 	view.$panelheadingButton.click(function() {
-		model.setNumberOfGuests(model.getNumberOfGuests() + 1);
-		alert(model.getNumberOfGuests());
+		stateController.hideAll();
+		stateController.showOverview();
 	});
 
 }

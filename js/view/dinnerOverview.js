@@ -110,11 +110,12 @@ var DinnerOverview = function (container, model) {
 	$panelBody.append(this.$dishes);
 	$panelDefault.append($panelBody);
 	this.menu.append($panelDefault);
-	this.menu.append($('<button/>').attr({
+	this.$printButton = $('<button/>').attr({
 		type: "button",
 		class: "btn btn-primary btn-md pull-right",
 		style: "margin-top: 10px"
-	}).html("Print Full Recipe"));
+	}).html("Print Full Recipe");
+	this.menu.append(this.$printButton);
 
 	container.append(this.menu);
 

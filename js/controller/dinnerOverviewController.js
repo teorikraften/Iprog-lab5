@@ -7,4 +7,9 @@ var DinnerOverviewController = function(view, model, stateController) {
 		stateController.showSelectDish();
 	});
 
+	view.$printButton.click(function() {
+		stateController.hideAll();
+		stateController.showInstructions();
+	});
+
 }
