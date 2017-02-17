@@ -1,7 +1,8 @@
-var StateController = function(home, selectDish, sidebar, overview, dishinfo, instructions) {
+var StateController = function(home, navbar, selectDish, sidebar, overview, dishinfo, instructions) {
 
 	this.hideAll = function() {
 		this.hideHome();
+		this.hideNavbar();
 		this.hideSidebar();
 		this.hideOverview();
 		this.hideSelectDish();
@@ -15,6 +16,14 @@ var StateController = function(home, selectDish, sidebar, overview, dishinfo, in
 
 	this.showHome = function() {
 		home.showView();
+	}
+
+	this.hideNavbar = function() {
+		navbar.hideView();
+	}
+
+	this.showNavbar = function() {
+		navbar.showView();
 	}
 
 	this.hideSelectDish = function() {

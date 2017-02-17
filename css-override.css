@@ -1,9 +1,32 @@
+html {
+    -webkit-tap-highlight-color: #FFF7CE;
+}
+
 .page-header {
 	border-bottom: none;
 }
 
+.jumbotron {
+   display: table-cell;
+   vertical-align: middle;
+}
+
 #sidebar {
     height: 100%;    
+}
+
+.nav-tabs > li > a {
+ background-color: #FFBB82; 
+}
+
+.nav-tabs > li > a:hover {
+ background-color: #FFF7CE;
+ border-color: #FFBB82;
+ border-bottom-color: #FFF7CE; 
+}
+
+.nav-tabs > li > a:active {
+ background-color: #FFF7CE; 
 }
 
 #buttonboxback {

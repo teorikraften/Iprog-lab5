@@ -20,6 +20,7 @@ $(function() {
 	
 	// State controller
 	var stateController = new StateController(homeView,
+											  navBarView,
 											  selectDishView, 
 											  selectDishSidebarView,
 											  dinnerOverview,
@@ -31,6 +32,7 @@ $(function() {
 
 	// Controllers
 	var homeViewController = new HomeViewController(homeView, model, stateController);
+	var navBarViewController = new NavBarViewController(navBarView, model, stateController);
 	var selectDishViewController = new SelectDishViewController(selectDishView, model, stateController);
 	var selectDishSidebarViewController = new SelectDishSidebarViewController(selectDishSidebarView, model, stateController);
 	var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model, stateController);
