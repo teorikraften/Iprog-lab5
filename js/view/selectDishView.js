@@ -12,9 +12,9 @@ var SelectDishView = function (container, model) {
   	}
 
 	model.addObserver(this);
-	this.update = function(obj) {
+	this.update = function(obj, filter) {
 		if(obj == 'main dish' || obj == 'starter' || obj == 'dessert') {
-			var mainDishes = model.getAllDishes(obj);
+			var mainDishes = model.getAllDishes(obj, filter);
 			$main.detach();
 			$main = $('<div/>').addClass('row');
 			for(var i = 0; i < mainDishes.length; i++) {
@@ -49,7 +49,7 @@ var SelectDishView = function (container, model) {
 	var $panel_heading_row = $("<div/>").addClass("row");
 	var $panel_heading_row_col = $("<div/>").attr({class: "col-md-6", id: "search"});
 	var $panel_heading_row_col_input_grp = $("<div/>").addClass("input-group").html(
-		  							"<input type='text' class='form-control' placeholder='Enter key words'>" +
+		  							"<input id='searchDish' type='text' class='form-control' placeholder='Enter key words'>" +
 		  							"<span class='input-group-addon'>search</span>");
 
 	var $dishTypeSelect = $("<div/>").attr({class: "col-md-6", id: "inputSelect"});

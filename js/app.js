@@ -28,6 +28,7 @@ $(function() {
 											  instructionsView);
 
 	stateController.hideAll();
+	stateController.hideNavbar();
 	stateController.showHome();
 
 	// Controllers

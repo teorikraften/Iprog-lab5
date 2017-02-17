@@ -11,4 +11,8 @@ var SelectDishViewController = function(view, model, stateController) {
 		stateController.showDishInfo($(this).attr("id"));
 	});
 
+	$("#searchDish").on("input", function() {
+		view.update(view.$select.val(), $(this).val());
+	});
+
 }
