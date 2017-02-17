@@ -37,9 +37,10 @@ var DishInformationView = function (container, model) {
 		});
 
 		this.$row.detach();
-
-		this.$row = $("<div/>").addClass("row well").html("<div class='col-md-7>" +
-											  			  	"<button type='button' class='btn btn-primary btn-lg' id='back'>Back</button>" +
+		this.$row = $("<div/>").addClass("row well");
+		this.$row.append(this.$back);
+		this.$row.html("<div class='col-md-7>" +
+											  			  	"<a class='btn btn-primary btn-lg' id='back'> Back </a>" +
 											  				"<div class='media'>" +
 											  					"<div class='media-left'>" +
 											  						"<img src='images/" + this.dish.image + "' class='media-object img-rounded'>" +
@@ -72,7 +73,12 @@ var DishInformationView = function (container, model) {
 	this.$button = $("<button/>").attr({type: "button",
 										class: "btn btn-primary btn-lg",
 										id: "addDish"})
-								 .html("Add to menu"); 
+								 .html("Add to menu");
+
+	this.$back = $("<button/>").attr({type: "button",
+										class: "btn btn-primary btn-lg pull-right",
+										id: "back"})
+								 .html("Back");
 
 	var guests = model.getNumberOfGuests();
 
@@ -87,8 +93,11 @@ var DishInformationView = function (container, model) {
 
 	this.$content = $("<div/>").addClass("col-md-9");
 
-	this.$row = $("<div/>").addClass("row well").html("<div class='col-md-7>" +
-										  			  	"<button type='button' class='btn btn-primary btn-lg' id='back'>Back</button>" +
+	this.$row = $("<div/>").addClass("row well");
+	this.$row.append(this.$back);
+	this.$row.html("<div class='col-md-7>" +
+										  			  	"<button type='button' class='btn btn-primary' id='back'>" + "Back" + 
+										  			  	"</button>" +
 										  				"<div class='media'>" +
 										  					"<div class='media-left'>" +
 										  						"<img src='images/" + this.dish.image + "' class='media-object img-rounded'>" +
@@ -110,6 +119,7 @@ var DishInformationView = function (container, model) {
 
 
 	this.$col5.append(this.$button);
+	
 	this.$row.append(this.$col5);
 
 	this.$content.append(this.$row);
