@@ -13,31 +13,32 @@ var SelectDishView = function (container, model) {
 
 	model.addObserver(this);
 	this.update = function(obj, filter) {
-		if(obj == 'main dish' || obj == 'starter' || obj == 'dessert') {
-			var mainDishes = model.getAllDishes(obj, filter);
-			$main.detach();
-			$main = $('<div/>').addClass('row');
-			for(var i = 0; i < mainDishes.length; i++) {
-				var $column = $('<div/>').addClass("col-sm-3");
-				var $thumbnail = $('<div/>').addClass('thumbnail');
+		if(obj == 'main course' || obj == 'side dish' || obj == 'dessert') {
+			model.getAllDishes(obj, filter, function(dishes) {
+				$main.detach();
+				$main = $('<div/>').addClass('row');
+				for(var i = 0; i < dishes.totalResults; i++) {
+					var $column = $('<div/>').addClass("col-sm-3");
+					var $thumbnail = $('<div/>').addClass('thumbnail');
 
-				var $img = $('<img/>').attr('src', 'images/' + mainDishes[i].image);
-				$img.attr('class','img-rounded img-thumbnail');
-				$img.attr('style','width:150px; height:150px');
-				var $caption = $('<div/>').addClass('caption');
+					var $img = $('<img/>').attr('src', dishes.baseUri + dishes.results[i].image);
+					$img.attr('class','img-rounded img-thumbnail');
+					$img.attr('style','width:150px; height:150px');
+					var $caption = $('<div/>').addClass('caption');
 
-				this.$h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");				//var $p = $('<p/>').html(allDishes[i].description);
+					this.$h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + dishes.results[i].id + "'>" + dishes.results[i].title + "</a>");				//var $p = $('<p/>').html(allDishes[i].description);
 
 
-				$caption.append(this.$h3);
-				//$caption.append($p);
+					$caption.append(this.$h3);
+					//$caption.append($p);
 
-				$thumbnail.append($img);
-				$thumbnail.append($caption);
+					$thumbnail.append($img);
+					$thumbnail.append($caption);
 
-				$column.append($thumbnail);
-				$main.append($column);
-			}
+					$column.append($thumbnail);
+					$main.append($column);
+				}
+			});
 		}
 		this.dishes.append($main);
 	}
@@ -59,8 +60,8 @@ var SelectDishView = function (container, model) {
   	var $formGroup = $('<div/>').addClass("form-group");
   	this.$select = $('<select/>').addClass("form-control").attr({
   		id: "sel1"});
-  	var $option1 = $('<option/>').attr('value', 'main dish').html("Main courses");
-  	var $option2 = $('<option/>').attr('value', "starter").html("Starters");
+  	var $option1 = $('<option/>').attr('value', 'main course').html("Main courses");
+  	var $option2 = $('<option/>').attr('value', "side dish").html("Side dishes");
   	var $option3 = $('<option/>').attr('value', "dessert").html("Desserts");
 
 
@@ -89,30 +90,30 @@ var SelectDishView = function (container, model) {
 
 
   	// main dishes
-  	var mainDishes = model.getAllDishes('main dish');
-	for(var i = 0; i < mainDishes.length; i++) {
-		var $column = $('<div/>').addClass("col-sm-3");
-		var $thumbnail = $('<div/>').addClass('thumbnail');
+  	model.getAllDishes('main course', 'burger', function(dishes) {
+  		for(var i = 0; i < dishes.totalResults; i++) {
+			var $column = $('<div/>').addClass("col-sm-6");
+			var $thumbnail = $('<div/>').addClass('thumbnail');
 
-		var $img = $('<img/>').attr('src', 'images/' + mainDishes[i].image);
-		$img.attr('class','img-rounded img-thumbnail');
-		$img.attr('style','width:150px; height:150px');
-		var $caption = $('<div/>').addClass('caption');
+			var $img = $('<img/>').attr('src', dishes.baseUri + dishes.results[i].image);
+			$img.attr('class','img-rounded img-thumbnail');
+			$img.attr('style','width:150px; height:130px');
+			var $caption = $('<div/>').addClass('caption');
 
-		this.$h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + mainDishes[i].id + "'>" + mainDishes[i].name + "</a>");
-		//var $p = $('<p/>').html(allDishes[i].description);
+			this.$h3 = $('<p/>').html("<a class='dishclick' href='#' id='" + dishes.results[i].id + "'>" + dishes.results[i].title + "</a>");
+			//var $p = $('<p/>').html(allDishes[i].description);
 
 
-		$caption.append(this.$h3);
-		//$caption.append($p);
+			$caption.append(this.$h3);
+			//$caption.append($p);
 
-		$thumbnail.append($img);
-		$thumbnail.append($caption);
+			$thumbnail.append($img);
+			$thumbnail.append($caption);
 
-		$column.append($thumbnail);
-		$main.append($column);
-	}
-
+			$column.append($thumbnail);
+			$main.append($column);
+		}
+  	});
 
 	$content.append($panel);
 	container.append($content);

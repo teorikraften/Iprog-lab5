@@ -1,10 +1,7 @@
 $(function() {
 	//We instantiate our model
 	var model = new DinnerModel();
-	model.addDishToMenu(1);
-	model.addDishToMenu(100);
-	model.addDishToMenu(200);
-	model.setNumberOfGuests(3);
+	model.setNumberOfGuests(2);
 	
 	//And create the needed controllers and views
 

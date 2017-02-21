@@ -74,8 +74,8 @@ var StateController = function(home, navbar, selectDish, sidebar, overview, dish
 		this.removeState('dishinfo');
 	}
 
-	this.showDishInfo = function(dish) {
-		dishinfo.showView(dish);
+	this.showDishInfo = function(dishID) {
+		dishinfo.showView(dishID);
 		this.shownStates.push('dishinfo');
 	}
 
