@@ -54,7 +54,7 @@ var DinnerModel = function() {
 		//TODO Lab 2
 		var ingredients = [];
 		this.menu.forEach(function(dish) {
-			dish.ingredients.forEach(function(ingredient) {
+			dish.extendedIngredients.forEach(function(ingredient) {
 				ingredients.push(ingredient);
 			});
 		});
@@ -67,8 +67,8 @@ var DinnerModel = function() {
 		var allIngredients = this.getAllIngredients();
 		var totalPrice = 0;
 
-		allIngredients.forEach(function(ingredients) {
-			totalPrice += ingredients.price;
+		allIngredients.forEach(function(ingredient) {
+			totalPrice += ingredient.amount;
 		});
 
 		return totalPrice*this.guests;
@@ -83,7 +83,7 @@ var DinnerModel = function() {
 
 		// check if dish of same type exists
 		this.menu.forEach(function(dish, i, menu) {
-			if(dish.type == newDish.type) {
+			if(dish.id == newDish.id) {
 				exists = true;
 				menu[i] = newDish;
 			}
@@ -187,11 +187,13 @@ var DinnerModel = function() {
 	}
 
 	this.getDishPrice = function (id) {
-		var dish = this.getDish(id);
 		var price = 0;
-		dish.ingredients.forEach(function(ingredient) {
-			price += ingredient.price;
+		this.getDish(id, function(dish) {
+			dish.extendedIngredients.forEach(function(ingredient, price) {
+				price += ingredient.amount;
+			});
 		});
+	
 		return price*this.guests;
 
 	}
