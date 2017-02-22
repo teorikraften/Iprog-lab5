@@ -22,7 +22,7 @@ var SelectDishSidebarView = function (container, model) {
 		$tbody.empty();
 		menu.forEach(function(dish) {
 			var $tr = $("<tr/>");
-			var $dishName = $("<td/>").html("<a href='dishdetails.html?id=" + dish.id + "'>" + dish.name + "</a>");
+			var $dishName = $("<td/>").html("<a href='dishdetails.html?id=" + dish.id + "'>" + dish.title + "</a>");
 			var $dishPrice = $("<td/>").html(model.getDishPrice(dish.id) + " SEK");
 			$tr.append($dishName);
 			$tr.append($dishPrice);
@@ -77,7 +77,7 @@ var SelectDishSidebarView = function (container, model) {
 	
 	menu.forEach(function(dish) {
 		var $tr = $("<tr/>");
-		var $dishName = $("<td/>").html("<a href='dishdetails.html?id=" + dish.id + "'>" + dish.name + "</a>");
+		var $dishName = $("<td/>").html("<a href='dishdetails.html?id=" + dish.id + "'>" + dish.title + "</a>");
 		var $dishPrice = $("<td/>").html(model.getDishPrice(dish.id) + " SEK");
 		$tr.append($dishName);
 		$tr.append($dishPrice);

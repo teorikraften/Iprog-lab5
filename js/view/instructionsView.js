@@ -22,7 +22,7 @@ var InstructionsView = function (container, model) {
 			$media = $("<div/>").addClass("media");
 		
 			$medialeft = $("<div/>").addClass("media-left pull-left");
-			$image = $("<img>").attr("src","images/" + dish.image);
+			$image = $("<img>").attr("src", dish.baseUri + dish.image);
 			$image.addClass("media-object");
 			$medialeft.append($image);
 
@@ -66,7 +66,7 @@ var InstructionsView = function (container, model) {
 		$media = $("<div/>").addClass("media");
 		
 		$medialeft = $("<div/>").addClass("media-left pull-left");
-		$image = $("<img>").attr("src","images/" + dish.image);
+		$image = $("<img>").attr("src", dish.baseUri + dish.image);
 		$image.addClass("media-object");
 		$medialeft.append($image);
 

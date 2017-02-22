@@ -187,13 +187,13 @@ var DinnerModel = function() {
 	}
 
 	this.getDishPrice = function (id) {
-		var price = 0;
+		price = 0;
 		this.getDish(id, function(dish) {
-			dish.extendedIngredients.forEach(function(ingredient, price) {
+			dish.extendedIngredients.forEach(function(ingredient) {
 				price += ingredient.amount;
 			});
 		});
-	
+		//ASYNCH!!!!
 		return price*this.guests;
 
 	}

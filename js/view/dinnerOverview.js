@@ -32,12 +32,12 @@ var DinnerOverview = function (container, model) {
 			var $column = $('<div/>').addClass("col-md-3");
 			var $thumbnail = $('<div/>').addClass('thumbnail');
 
-			var $img = $('<img/>').attr('src', 'images/' + dish.image);
+			var $img = $('<img/>').attr('src', dish.baseUri + dish.image);
 			$img.attr('class','img-rounded img-thumbnail');
 			$img.attr('style','width:100%; height:100%');
 			var $caption = $('<div/>').addClass('caption');
 
-			var $h3 = $('<h3/>').html("<a href='dishdetails.html?id=" + dish.id + "'>" + dish.name + "</a>");
+			var $h3 = $('<h3/>').html("<a href='dishdetails.html?id=" + dish.id + "'>" + dish.title + "</a>");
 			//var $p = $('<p/>').html(allDishes[i].description);
 
 
@@ -81,7 +81,7 @@ var DinnerOverview = function (container, model) {
 		var $column = $('<div/>').addClass("col-md-3");
 		var $thumbnail = $('<div/>').addClass('thumbnail');
 
-		var $img = $('<img/>').attr('src', 'images/' + fullMenu[i].image);
+		var $img = $('<img/>').attr('src', fullMenu[i].baseUri + fullMenu[i].image);
 		$img.attr('class','img-rounded img-thumbnail');
 		$img.attr('style','width:100%; height:100%');
 		var $caption = $('<div/>').addClass('caption');
