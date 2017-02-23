@@ -38,7 +38,7 @@ var InstructionsView = function (container, model) {
 									'data-parent': 'accordion',
 										   'href': '#' + dish.id + 'collapse' + instruction.number  
 								}).html("Step " + instruction.number);
-						var $accordionItemBody = $("<div/>").addClass("panel-collapse collapse").attr("id", dish.id + "collapse" + instruction.number);
+						var $accordionItemBody = $("<div/>").addClass("panel-collapse").attr("id", dish.id + "collapse" + instruction.number);
 							var $itemContent = $("<p/>").html(instruction.step);
 
 					$accordion.append($accordionItem);
@@ -52,6 +52,7 @@ var InstructionsView = function (container, model) {
 
 			parent.$panelbody.append($row);
 				$row.append($col4);
+					$col4.append($("<h3/>").html(dish.title));
 					$col4.append($img);
 				$row.append($col8);
 					$col8.append($accordion);

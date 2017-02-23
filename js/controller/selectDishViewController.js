@@ -1,6 +1,17 @@
 // selectDistViewController
 var SelectDishViewController = function(view, model, stateController) {
 	
+	$(document).on({
+		ajaxStart: function() { 
+			view.disherino.children().hide();
+			view.$loading.show(); 
+		},
+		ajaxStop: function() { 
+			view.disherino.children().show(); 
+			view.$loading.hide();
+		}
+	});
+
 	view.$select.change(function() {
 		view.update(view.$select.val());
 	});

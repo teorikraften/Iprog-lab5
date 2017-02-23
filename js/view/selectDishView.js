@@ -83,6 +83,10 @@ var SelectDishView = function (container, model) {
 
 
   	this.disherino = $panel_body;
+  	this.$loading = $("<img/>").attr({src: "https://i.stack.imgur.com/FhHRx.gif",
+  								     alt: "Loading..."});
+  	this.$loading.hide();
+  	this.disherino.append(this.$loading);
 
   	var $main = $('<div/>').addClass('row');
   	this.disherino.append($main);
