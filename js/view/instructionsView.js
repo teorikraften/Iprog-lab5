@@ -15,33 +15,47 @@ var InstructionsView = function (container, model) {
 	model.addObserver(this);
 	this.update = function(obj) {
 		guests = model.getNumberOfGuests();
-		container.find('#numberOfGuests').html("My Dinner: " + guests);
+		container.find('#numberOfGuests').html("My Dinner: " + guests + " guests");
 		
 		$panelbody.empty();
 		menu.forEach(function(dish) {
-			$media = $("<div/>").addClass("media");
-		
-			$medialeft = $("<div/>").addClass("media-left pull-left");
-			$image = $("<img>").attr("src", dish.baseUri + dish.image);
-			$image.addClass("media-object");
-			$medialeft.append($image);
+			this.$row = $("<div/>").addClass("row");
+				this.$col4 = $("<div/>").addClass("col-md-4");
+					this.$img = $("<img/>").attr("src", dish.image);
+				this.$col8 = $("<div/>").addClass("col-md-8");
+					this.$accordion = $("<div/>").addClass("panel-group").attr("id", "accordion");
 
-			$mediabody = $("<div/>").addClass("media-body");
-			$h4 = $("<h3>").addClass("media-heading");
-			$h4.append(dish.name);
-			$mediabody.append($h4);
-			$p = $("<p/>").append(dish.description);
-			$mediabody.append($p);
 
-			$media.append($medialeft);
-			$media.append($mediabody);
+			model.getDishInstructions(dish.id, function(instructions) {
+				instructions.steps.forEach(function(instruction) {
+					// an instruction
+					this.$accordionItem = $("<div/").addClass("panel panel-default");
+						this.$accordionItemHeading = $("<div/>").addClass("panel-heading");
+							this.$itemTitle = $("<h4/>").addClass("panel-title");
+								this.$itemTitleLink = $("<a/>").attr({
+									'data-toggle': 'collapse',
+									'data-parent': 'accordion',
+										   'href': 'collapse' + instruction.number  
+								}).html("Step " + instruction.number);
+						this.$accordionItemBody = $("<div/>").addClass("panel-collapse collapse").attr("id", "collapse"+instruction.number);
+							this.$itemContent = $("<p/>").html(instruction.step);
 
-			$panelbody.append($media);
-			$panelbody.append($("<hr/>"));
+					this.$accordion.append(this.$accordionItem);
+						this.$accordionItem.append(this.$accordionItemHeading);
+							this.$accordionItemHeading.append(this.$itemTitle);
+								this.$itemTitle.append(this.$itemTitleLink);
+						this.$accordionItem.append(this.$accordionItemBody);
+							this.$accordionItemBody.append(this.$itemContent);
+				});			
+			});
+
+			this.$panelbody.append(this.$row);
+				this.$row.append(this.$col4);
+					this.$col4.append(this.$img);
+				this.$row.append(this.$col8);
+					this.$col8.append(this.$accordion);
+
 		});
-
-		// remove last hr tag
-		$panelbody.children().last().remove();
 	}
 
 	this.$body = $("<div/>").addClass("col-md-12");
@@ -50,47 +64,22 @@ var InstructionsView = function (container, model) {
 	var menu = model.getFullMenu();
 
 
-	$panel = $("<div/>").addClass("panel panel-default");
-	$panelheading = $("<div/>").addClass("panel-heading");
+	this.$panel = $("<div/>").addClass("panel panel-default");
+	this.$panelheading = $("<div/>").addClass("panel-heading");
 	this.$panelheadingButton = $("<button/>").attr({
 		type: "button",
 		class: "btn btn-primary btn-md pull-right",
 		style: "margin-top: 10px"
 	}).html("Go back and edit dinner");
-	$panelheading.append(this.$panelheadingButton);
-	$panelheading.append("<h3 id = 'numberOfGuests'>My Dinner: " + guests + "</h3>");
+	this.$panelheading.append(this.$panelheadingButton);
+	this.$panelheading.append("<h3 id = 'numberOfGuests'>My Dinner: " + guests + " guests</h3>");
 
 	$panelbody = $("<div/>").addClass("panel-body");
 
-	menu.forEach(function(dish) {
-		$media = $("<div/>").addClass("media");
-		
-		$medialeft = $("<div/>").addClass("media-left pull-left");
-		$image = $("<img>").attr("src", dish.baseUri + dish.image);
-		$image.addClass("media-object");
-		$medialeft.append($image);
+	this.$panel.append(this.$panelheading);
+	this.$panel.append(this.$panelbody);
 
-		$mediabody = $("<div/>").addClass("media-body");
-		$h4 = $("<h3>").addClass("media-heading");
-		$h4.append(dish.name);
-		$mediabody.append($h4);
-		$p = $("<p/>").append(dish.description);
-		$mediabody.append($p);
-
-		$media.append($medialeft);
-		$media.append($mediabody);
-
-		$panelbody.append($media);
-		$panelbody.append($("<hr/>"));
-	});
-
-	// remove last hr tag
-	$panelbody.children().last().remove();
-
-	$panel.append($panelheading);
-	$panel.append($panelbody);
-
-	this.$body.append($panel);
+	this.$body.append(this.$panel);
 
 	container.append(this.$body);
 	

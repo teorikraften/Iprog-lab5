@@ -69,20 +69,23 @@ var DishInformationView = function (container, model) {
 	this.dishID = -1;
 	this.dishName = "";
 	this.$content = $("<div/>").addClass("col-md-9");
-		this.$row = $("<div/>").addClass("row well");
-			this.$col7 = $("<div/>").addClass("col-md-7");
-				this.$media = $("<div/>").addClass("media");
-					this.$mediaLeft = $("<div/>").addClass("media-left");
-						this.$img = $("<img/>").addClass("media-object img-rounded").attr({style: "width:150px;height:150px"});
-					this.$mediaBody = $("<div/>").addClass("media-body");
-						this.$dishTitle = $("<h3/>").addClass("media-heading").html("Placeholder for X guests");
-						this.$servings = $("<span/>").addClass("badge");
-						this.$dishInstructions = $("<p/>").html("Instructions");
-			this.$col5 = $("<div/>").addClass("col-md-5");
-				this.$panel = $("<div/>").addClass("panel panel-default");
-					this.$panelHeading = $("<div/>").addClass("panel-heading").html("Ingredients");
-					this.$panelBody = $("<div/>").addClass("panel-body");
-						this.$listIngredients = $("<ul/>").addClass("list-group");
+		this.$panelBig = $("<div/>").addClass("panel panel-default");
+			this.$panelBigHeading = $("<div/>").addClass("panel-heading");
+				this.$dishTitle = $("<h3/>").addClass("media-heading").html("Placeholder for X guests");
+					this.$servings = $("<span/>").addClass("badge");
+			this.$panelBigBody = $("<div/>").addClass("panel-body");
+				this.$row = $("<div/>").addClass("row");
+					this.$col7 = $("<div/>").addClass("col-md-7");
+						this.$media = $("<div/>").addClass("media");
+							this.$mediaLeft = $("<div/>").addClass("media-left");
+								this.$img = $("<img/>").addClass("media-object img-rounded").attr({style: "width:150px;height:150px"});
+							this.$mediaBody = $("<div/>").addClass("media-body");
+								this.$dishInstructions = $("<p/>").html("Instructions");
+					this.$col5 = $("<div/>").addClass("col-md-5");
+						this.$panel = $("<div/>").addClass("panel panel-default");
+							this.$panelHeading = $("<div/>").addClass("panel-heading").html("Ingredients");
+							this.$panelBody = $("<div/>").addClass("panel-body");
+								this.$listIngredients = $("<ul/>").addClass("list-group");
 
 
 	this.$button = $("<button/>").attr({type: "button",
@@ -98,20 +101,23 @@ var DishInformationView = function (container, model) {
 
 
 	container.append(this.$content);
-	this.$content.append(this.$row);
-		this.$row.append(this.$col7);
-			this.$col7.append(this.$media);
-				this.$media.append(this.$mediaLeft);
-					this.$mediaLeft.append(this.$img);
-				this.$media.append(this.$mediaBody);
-					this.$mediaBody.append(this.$dishTitle);
-					this.$mediaBody.append(this.$servings);
-					this.$mediaBody.append(this.$dishInstructions);
-		this.$row.append(this.$col5);
-			this.$col5.append(this.$panel);
-			this.$panel.append(this.$panelHeading);
-			this.$panel.append(this.$panelBody);
-				this.$panelBody.append(this.$listIngredients);
+	this.$content.append(this.$panelBig);
+		this.$panelBig.append(this.$panelBigHeading);
+			this.$panelBigHeading.append(this.$dishTitle);
+			this.$panelBigHeading.append(this.$servings);
+		this.$panelBig.append(this.$panelBigBody);
+			this.$panelBigBody.append(this.$row);
+				this.$row.append(this.$col7);
+					this.$col7.append(this.$media);
+						this.$media.append(this.$mediaLeft);
+							this.$mediaLeft.append(this.$img);
+						this.$media.append(this.$mediaBody);
+							this.$mediaBody.append(this.$dishInstructions);
+				this.$row.append(this.$col5);
+					this.$col5.append(this.$panel);
+					this.$panel.append(this.$panelHeading);
+					this.$panel.append(this.$panelBody);
+						this.$panelBody.append(this.$listIngredients);
 
 	this.$col5.append(this.$button);
 	this.$col5.append(this.$back);

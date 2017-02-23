@@ -8,6 +8,10 @@ var NavBarView = function(container, model) {
 		this.$ul.show();
 	}
 
+	this.update = function(obj) {
+		
+	}
+
 	this.$ul = $("<ul/>").addClass("nav nav-tabs");
 	this.$li_home = $("<li/>").addClass("active").html("<a href='#'>Home</a>");
 	this.$li_overview = $("<li/>").html("<a href='#'>Overview</a>");

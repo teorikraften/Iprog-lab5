@@ -164,6 +164,24 @@ var DinnerModel = function() {
 		});	
 	}
 
+	// returns a json object with stepwise instructions
+	this.getDishInstructions = function(id, cb, cbError) {
+		$.ajax( {
+		   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/analyzedInstructions',
+		   headers: {
+		     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+		   },
+		   dataType: 'json',
+		   success: function(instructions) {
+		   	 console.log(instructions);
+		     cb(instructions);
+		   },
+		   error: function(error) {
+		     console.log(error);
+		   }
+		});	
+	}
+
 	this.getIngredientList = function(ingredients, servings, cb) {
 		$.ajax( {
 		   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/visualizeIngredients',
