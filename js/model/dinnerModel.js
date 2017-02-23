@@ -186,13 +186,24 @@ var DinnerModel = function() {
 		});		
 	}
 
-	this.getDishPrice = function (id) {
+	this.getDishPrice = function (ID) {
 		price = 0;
-		this.getDish(id, function(dish) {
+		this.menu.forEach(function(dish) {
+			if (dish.id == ID) {
+				dish.extendedIngredients.forEach(function(ingredient) {
+					price += ingredient.amount;
+				});
+			}
+		});
+
+
+
+
+		/*this.getDish(id, function(dish) {
 			dish.extendedIngredients.forEach(function(ingredient) {
 				price += ingredient.amount;
 			});
-		});
+		});*/
 		//ASYNCH!!!!
 		return price*this.guests;
 
