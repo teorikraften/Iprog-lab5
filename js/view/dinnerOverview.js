@@ -32,7 +32,7 @@ var DinnerOverview = function (container, model) {
 			var $column = $('<div/>').addClass("col-md-3");
 			var $thumbnail = $('<div/>').addClass('thumbnail');
 
-			var $img = $('<img/>').attr('src', dish.baseUri + dish.image);
+			var $img = $('<img/>').attr('src', dish.image);
 			$img.attr('class','img-rounded img-thumbnail');
 			$img.attr('style','width:100%; height:100%');
 			var $caption = $('<div/>').addClass('caption');
@@ -81,7 +81,7 @@ var DinnerOverview = function (container, model) {
 		var $column = $('<div/>').addClass("col-md-3");
 		var $thumbnail = $('<div/>').addClass('thumbnail');
 
-		var $img = $('<img/>').attr('src', fullMenu[i].baseUri + fullMenu[i].image);
+		var $img = $('<img/>').attr('src', fullMenu[i].image);
 		$img.attr('class','img-rounded img-thumbnail');
 		$img.attr('style','width:100%; height:100%');
 		var $caption = $('<div/>').addClass('caption');
