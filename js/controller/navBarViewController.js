@@ -30,4 +30,30 @@ var NavBarViewController = function(view, model, stateController) {
 		stateController.hideAll();
 		stateController.showInstructions();
 	});
+
+	$(".container").on('click', '*', function() {
+		stateController.shownStates.forEach(function(state) {
+			switch(state) {
+				case 'overview':
+					view.$ul.find("li").removeClass("active");
+					view.$li_overview.addClass("active");
+					break;
+
+				case 'home':
+					view.$ul.find("li").removeClass("active");
+					view.$li_home.addClass("active");
+					break;
+
+				case 'dishes':
+					view.$ul.find("li").removeClass("active");
+					view.$li_dishes.addClass("active");
+					break;
+
+				case 'instructions':
+					view.$ul.find("li").removeClass("active");
+					view.$li_instructions.addClass("active");
+					break;
+			}
+		});
+	});
 }
