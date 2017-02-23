@@ -99,10 +99,10 @@ var DishInformationView = function (container, model) {
 									  id: "back"})
 							   .html("Back");
 
-	this.$loading = $("<img/>").attr({src: "https://i.stack.imgur.com/FhHRx.gif",
-  								     alt: "Loading..."});
+	this.$loading = $("<div/>").addClass("text-center").append($("<img/>").attr({src: "https://i.stack.imgur.com/FhHRx.gif",
+  								     alt: "Loading..."}));
   	this.$loading.hide();
-  	this.$content.append(this.$loading);
+  	this.$panelBigBody.append(this.$loading);
 
 	container.append(this.$content);
 	this.$content.append(this.$panelBig);

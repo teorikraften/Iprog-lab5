@@ -20,10 +20,10 @@ var SelectDishView = function (container, model) {
 				$main.detach();
 				$main = $('<div/>').addClass('row');
 				for(var i = 0; i < dishes.totalResults; i++) {
-					var $column = $('<div/>').addClass("col-sm-6");
+					var $column = $('<div/>').addClass("col-xs-6");
 					var $thumbnail = $('<div/>').addClass('thumbnail');
 					var $img = $('<img/>').attr('src', dishes.baseUri + dishes.results[i].image);
-					$img.attr('class','img-rounded img-thumbnail img-responsive');
+					$img.attr('class','img-rounded img-fluid');
 					//$img.attr('style','width:150px; height:130px');
 					var $caption = $('<div/>').addClass('caption');
 
@@ -38,6 +38,9 @@ var SelectDishView = function (container, model) {
 
 					$column.append($thumbnail);
 					$main.append($column);
+					if( (i + 1) % 2 == 0) {
+						$main.append($("<div/>").addClass("clearfix"));
+					}
 				}
 				parent.disherino.append($main);
 			});
@@ -83,8 +86,8 @@ var SelectDishView = function (container, model) {
 
 
   	this.disherino = $panel_body;
-  	this.$loading = $("<img/>").attr({src: "https://i.stack.imgur.com/FhHRx.gif",
-  								     alt: "Loading..."});
+  	this.$loading = $("<div/>").addClass("text-center").append($("<img/>").attr({src: "https://i.stack.imgur.com/FhHRx.gif",
+  								     alt: "Loading..."}));
   	this.$loading.hide();
   	this.disherino.append(this.$loading);
 
@@ -95,14 +98,14 @@ var SelectDishView = function (container, model) {
 
 
   	// main dishes
-  	model.getAllDishes('main course', 'shit', function(dishes) {
+  	model.getAllDishes('main course', '', function(dishes) {
   		for(var i = 0; i < dishes.totalResults; i++) {
-			var $column = $('<div/>').addClass("col-sm-6");
+			var $column = $('<div/>').addClass("col-xs-6");
 			var $thumbnail = $('<div/>').addClass('thumbnail');
 
 			var $img = $('<img/>').attr('src', dishes.baseUri + dishes.results[i].image);
-			$img.attr('class','img-rounded img-thumbnail img-responsive');
-			//$img.attr('style','width:150px; height:130px');
+			$img.attr('class','img-responsive img-rounded');
+			//$img.attr('style','padding-top:5px');
 			var $caption = $('<div/>').addClass('caption');
 
 			this.$h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + dishes.results[i].id + "'>" + dishes.results[i].title + "</a>");
@@ -117,11 +120,16 @@ var SelectDishView = function (container, model) {
 
 			$column.append($thumbnail);
 			$main.append($column);
+			if( (i + 1) % 2 == 0) {
+				$main.append($("<div/>").addClass("clearfix"));
+			}
 		}
   	});
 
 	$content.append($panel);
 	container.append($content);
+
+
 
 }
  

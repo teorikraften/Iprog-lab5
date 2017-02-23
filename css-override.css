@@ -6,13 +6,34 @@ html {
 	border-bottom: none;
 }
 
+.thumbnail > img {
+    height: 300px;
+    width: auto;
+}
+
 .jumbotron {
    display: table-cell;
    vertical-align: middle;
 }
 
 #sidebar {
-    height: 100%;    
+    max-height: 800px;    
+}
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(255, 121, 16, 0.5);
 }
 
 .nav-tabs > li > a:hover {

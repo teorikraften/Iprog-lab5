@@ -3,11 +3,11 @@ var DishInformationViewController = function(view, model, stateController) {
 
 	$(document).on({
 		ajaxStart: function() { 
-			view.$content.children().hide();
+			view.$panelBigBody.children().hide();
 			view.$loading.show(); 
 		},
 		ajaxStop: function() { 
-			view.$content.children().show(); 
+			view.$panelBigBody.children().show(); 
 			view.$loading.hide();
 		}
 	});
