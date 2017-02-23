@@ -116,9 +116,11 @@ var DinnerModel = function() {
 	   	$.ajax( {
 		   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',
 		   headers: {
-		     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB',
-		     'query': filter,
-		     'type': type
+		     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+		   },
+		   data: {
+		   	 type: type,
+		   	 query: filter
 		   },
 		   dataType: 'json',
 		   success: function(dishes) {
@@ -170,7 +172,7 @@ var DinnerModel = function() {
 		   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/analyzedInstructions',
 		   headers: {
 		     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-		   },
+		    },
 		   dataType: 'json',
 		   success: function(instructions) {
 		   	 console.log(instructions);

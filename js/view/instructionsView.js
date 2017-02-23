@@ -3,6 +3,7 @@ var InstructionsView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 
+	var parent = this;
 	this.hideView = function() {
 		this.$body.hide();
 	}
@@ -17,43 +18,44 @@ var InstructionsView = function (container, model) {
 		guests = model.getNumberOfGuests();
 		container.find('#numberOfGuests').html("My Dinner: " + guests + " guests");
 		
-		$panelbody.empty();
+		parent.$panelbody.empty();
 		menu.forEach(function(dish) {
-			this.$row = $("<div/>").addClass("row");
-				this.$col4 = $("<div/>").addClass("col-md-4");
-					this.$img = $("<img/>").attr("src", dish.image);
-				this.$col8 = $("<div/>").addClass("col-md-8");
-					this.$accordion = $("<div/>").addClass("panel-group").attr("id", "accordion");
+			var $row = $("<div/>").addClass("row");
+				var $col4 = $("<div/>").addClass("col-md-4");
+					 var $img = $("<img/>").addClass("img-responsive").attr("src", dish.image);
+				var $col8 = $("<div/>").addClass("col-md-8");
+					var $accordion = $("<div/>").addClass("panel-group").attr("id", "accordion");
 
 
 			model.getDishInstructions(dish.id, function(instructions) {
-				instructions.steps.forEach(function(instruction) {
+				instructions[0].steps.forEach(function(instruction) {
 					// an instruction
-					this.$accordionItem = $("<div/").addClass("panel panel-default");
-						this.$accordionItemHeading = $("<div/>").addClass("panel-heading");
-							this.$itemTitle = $("<h4/>").addClass("panel-title");
-								this.$itemTitleLink = $("<a/>").attr({
+					var $accordionItem = $("<div/>").addClass("panel panel-default");
+						var $accordionItemHeading = $("<div/>").addClass("panel-heading");
+							var $itemTitle = $("<h4/>").addClass("panel-title");
+								var $itemTitleLink = $("<a/>").attr({
 									'data-toggle': 'collapse',
 									'data-parent': 'accordion',
-										   'href': 'collapse' + instruction.number  
+										   'href': '#' + dish.id + 'collapse' + instruction.number  
 								}).html("Step " + instruction.number);
-						this.$accordionItemBody = $("<div/>").addClass("panel-collapse collapse").attr("id", "collapse"+instruction.number);
-							this.$itemContent = $("<p/>").html(instruction.step);
+						var $accordionItemBody = $("<div/>").addClass("panel-collapse collapse").attr("id", dish.id + "collapse" + instruction.number);
+							var $itemContent = $("<p/>").html(instruction.step);
 
-					this.$accordion.append(this.$accordionItem);
-						this.$accordionItem.append(this.$accordionItemHeading);
-							this.$accordionItemHeading.append(this.$itemTitle);
-								this.$itemTitle.append(this.$itemTitleLink);
-						this.$accordionItem.append(this.$accordionItemBody);
-							this.$accordionItemBody.append(this.$itemContent);
+					$accordion.append($accordionItem);
+						$accordionItem.append($accordionItemHeading);
+							$accordionItemHeading.append($itemTitle);
+								$itemTitle.append($itemTitleLink);
+						$accordionItem.append($accordionItemBody);
+							$accordionItemBody.append($itemContent);
 				});			
 			});
 
-			this.$panelbody.append(this.$row);
-				this.$row.append(this.$col4);
-					this.$col4.append(this.$img);
-				this.$row.append(this.$col8);
-					this.$col8.append(this.$accordion);
+			parent.$panelbody.append($row);
+				$row.append($col4);
+					$col4.append($img);
+				$row.append($col8);
+					$col8.append($accordion);
+			parent.$panelbody.append($("<hr/>"));
 
 		});
 	}
@@ -74,7 +76,7 @@ var InstructionsView = function (container, model) {
 	this.$panelheading.append(this.$panelheadingButton);
 	this.$panelheading.append("<h3 id = 'numberOfGuests'>My Dinner: " + guests + " guests</h3>");
 
-	$panelbody = $("<div/>").addClass("panel-body");
+	this.$panelbody = $("<div/>").addClass("panel-body");
 
 	this.$panel.append(this.$panelheading);
 	this.$panel.append(this.$panelbody);
