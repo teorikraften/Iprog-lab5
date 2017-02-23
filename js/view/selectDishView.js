@@ -2,6 +2,7 @@
 var SelectDishView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction
+  	var parent = this;
 
   	this.hideView = function() {
   		$content.hide();
@@ -14,16 +15,16 @@ var SelectDishView = function (container, model) {
 	model.addObserver(this);
 	this.update = function(obj, filter) {
 		if(obj == 'main course' || obj == 'side dish' || obj == 'dessert') {
+			console.log(obj);
 			model.getAllDishes(obj, filter, function(dishes) {
 				$main.detach();
 				$main = $('<div/>').addClass('row');
 				for(var i = 0; i < dishes.totalResults; i++) {
-					var $column = $('<div/>').addClass("col-sm-3");
+					var $column = $('<div/>').addClass("col-sm-6");
 					var $thumbnail = $('<div/>').addClass('thumbnail');
-
 					var $img = $('<img/>').attr('src', dishes.baseUri + dishes.results[i].image);
-					$img.attr('class','img-rounded img-thumbnail');
-					$img.attr('style','width:150px; height:150px');
+					$img.attr('class','img-rounded img-thumbnail img-responsive');
+					//$img.attr('style','width:150px; height:130px');
 					var $caption = $('<div/>').addClass('caption');
 
 					this.$h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + dishes.results[i].id + "'>" + dishes.results[i].title + "</a>");				//var $p = $('<p/>').html(allDishes[i].description);
@@ -38,9 +39,10 @@ var SelectDishView = function (container, model) {
 					$column.append($thumbnail);
 					$main.append($column);
 				}
+				parent.disherino.append($main);
 			});
 		}
-		this.dishes.append($main);
+		//this.dishes.append($main);
 	}
 
 	$content = $("<div/>").addClass("col-md-9");
@@ -50,8 +52,7 @@ var SelectDishView = function (container, model) {
 	var $panel_heading_row = $("<div/>").addClass("row");
 	var $panel_heading_row_col = $("<div/>").attr({class: "col-md-6", id: "search"});
 	var $panel_heading_row_col_input_grp = $("<div/>").addClass("input-group").html(
-		  							"<input id='searchDish' type='text' class='form-control' placeholder='Enter key words'>" +
-		  							"<span class='input-group-addon'>search</span>");
+		  							"<input id='searchDish' type='text' class='form-control' placeholder='Enter key words'>");
 
 	var $dishTypeSelect = $("<div/>").attr({class: "col-md-6", id: "inputSelect"});
 	var $panel_body = $("<div/>").addClass("panel-body").attr("id", "dishes");
@@ -81,26 +82,26 @@ var SelectDishView = function (container, model) {
 
 
 
-  	this.dishes = $panel_body;
+  	this.disherino = $panel_body;
 
   	var $main = $('<div/>').addClass('row');
-  	this.dishes.append($main);
-  	$panel_body.append(this.dishes);
+  	this.disherino.append($main);
+  	$panel_body.append(this.disherino);
 
 
 
   	// main dishes
-  	model.getAllDishes('main course', 'burger', function(dishes) {
+  	model.getAllDishes('main course', 'shit', function(dishes) {
   		for(var i = 0; i < dishes.totalResults; i++) {
 			var $column = $('<div/>').addClass("col-sm-6");
 			var $thumbnail = $('<div/>').addClass('thumbnail');
 
 			var $img = $('<img/>').attr('src', dishes.baseUri + dishes.results[i].image);
-			$img.attr('class','img-rounded img-thumbnail');
-			$img.attr('style','width:150px; height:130px');
+			$img.attr('class','img-rounded img-thumbnail img-responsive');
+			//$img.attr('style','width:150px; height:130px');
 			var $caption = $('<div/>').addClass('caption');
 
-			this.$h3 = $('<p/>').html("<a class='dishclick' href='#' id='" + dishes.results[i].id + "'>" + dishes.results[i].title + "</a>");
+			this.$h3 = $('<h3/>').html("<a class='dishclick' href='#' id='" + dishes.results[i].id + "'>" + dishes.results[i].title + "</a>");
 			//var $p = $('<p/>').html(allDishes[i].description);
 
 

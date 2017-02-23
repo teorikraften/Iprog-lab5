@@ -44,7 +44,7 @@ var NavBarViewController = function(view, model, stateController) {
 					view.$li_home.addClass("active");
 					break;
 
-				case 'dishes':
+				case 'selectDish':
 					view.$ul.find("li").removeClass("active");
 					view.$li_dishes.addClass("active");
 					break;

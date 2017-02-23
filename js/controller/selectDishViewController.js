@@ -11,8 +11,10 @@ var SelectDishViewController = function(view, model, stateController) {
 		stateController.showDishInfo($(this).attr("id"));
 	});
 
-	$("#searchDish").on("input", function() {
-		view.update(view.$select.val(), $(this).val());
+	$("#searchDish").on("keyup", function(event) {
+		if (event.keyCode == '13') {
+			view.update(view.$select.val(), $(this).val());
+		}
 	});
 
 }
