@@ -21,6 +21,8 @@ var DishInformationView = function (container, model) {
 
 	this.update = function(dishID) {
 		if(this.dishID != dishID && dishID != undefined) {
+			parent.$panelBigBody.children().hide();
+			parent.$loading.show();
 			this.dishID = dishID;
 			model.getDish(parent.dishID, function(dish) {
 				parent.dish = dish;
@@ -45,6 +47,8 @@ var DishInformationView = function (container, model) {
 				});
 
 				parent.$listIngredients.html(listItems);
+				parent.$panelBigBody.children().show();
+				parent.$loading.hide();				
 
 			});
 		}

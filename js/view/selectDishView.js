@@ -15,6 +15,8 @@ var SelectDishView = function (container, model) {
 	model.addObserver(this);
 	this.update = function(obj, filter) {
 		if(obj == 'main course' || obj == 'side dish' || obj == 'dessert') {
+			parent.disherino.children().hide();
+			parent.$loading.show();
 			model.getAllDishes(obj, filter, function(dishes) {
 				parent.$main.empty();
 				for(var i = 0; i < dishes.totalResults; i++) {
@@ -41,8 +43,11 @@ var SelectDishView = function (container, model) {
 					}
 				}
 				parent.disherino.append(parent.$main);
+				parent.disherino.children().show();
+				parent.$loading.hide();
 			});
 		}
+
 		//this.dishes.append($main);
 	}
 
