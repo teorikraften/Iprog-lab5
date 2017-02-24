@@ -99,12 +99,11 @@ var DinnerModel = function() {
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		//TODO Lab 2
-		var dish = this.getDish(id);
-		var dishIndex = this.menu.indexOf(dish);
-
-		if(dishIndex != -1) {
-			this.menu.splice(dishIndex, 1);
-		}
+		this.menu.forEach(function(dish, i, menu) {
+			if(id == dish.id) {
+				menu.splice(i, 1);	
+			}
+		});
 
 		this.notifyObservers();
 	}

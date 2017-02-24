@@ -13,9 +13,19 @@ var SelectDishSidebarViewController = function(view, model, stateController) {
 		}
 	});
 
+	$(document).on('click', '.dishClick', function() {
+		stateController.hideAll();
+		stateController.showSidebar();
+		stateController.showDishInfo($(this).attr("id"));
+	});	
+
 	view.$checkout.click(function() {
 		stateController.hideAll();
 		stateController.showOverview();
+	});
+
+	$(document).on('click', '.remove-button', function() {
+		model.removeDishFromMenu($(this).attr("id"));
 	});
 
 }

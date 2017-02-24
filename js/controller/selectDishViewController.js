@@ -16,13 +16,13 @@ var SelectDishViewController = function(view, model, stateController) {
 		view.update(view.$select.val());
 	});
 
-	$(document).on("click", ".dishclick", function() {
+	view.$main.on("click", ".dishclick", function() {
 		stateController.hideAll();
 		stateController.showSidebar();
 		stateController.showDishInfo($(this).attr("id"));
 	});
 
-	$("#searchDish").on("keyup", function(event) {
+	view.$dishSearch.on("keyup", function(event) {
 		if (event.keyCode == '13') {
 			view.update(view.$select.val(), $(this).val());
 		}

@@ -22,9 +22,11 @@ var SelectDishSidebarView = function (container, model) {
 		$tbody.empty();
 		menu.forEach(function(dish) {
 			var $tr = $("<tr/>");
-			var $dishName = $("<td/>").html("<a href='dishdetails.html?id=" + dish.id + "'>" + dish.title + "</a>");
+			var $dishName = $("<td/>").html("<a class='dishClick' href='#' id='" + dish.id + "'>" + dish.title + "</a>");
 			var $dishPrice = $("<td/>").html(model.getDishPrice(dish.id) + " SEK");
 			$tr.append($dishName);
+				$dishName.prepend($("<button/>").addClass("btn btn-sm remove-button").html("<span class='glyphicon glyphicon-remove'></span>").attr({style: "margin-right:5px",
+																																		id: dish.id}));
 			$tr.append($dishPrice);
 			$tbody.append($tr);
 		});
@@ -77,9 +79,10 @@ var SelectDishSidebarView = function (container, model) {
 	
 	menu.forEach(function(dish) {
 		var $tr = $("<tr/>");
-		var $dishName = $("<td/>").html("<a href='dishdetails.html?id=" + dish.id + "'>" + dish.title + "</a>");
+		var $dishName = $("<td/>").html("<a class='dishClick' href='#' id='" + dish.id + "'>" + dish.title + "</a>");
 		var $dishPrice = $("<td/>").html(model.getDishPrice(dish.id) + " SEK");
 		$tr.append($dishName);
+			$dishName.prepend($("<button/>").addClass("btn btn-sm").html("<span class='glyphicon glyphicon-remove'></span>"));
 		$tr.append($dishPrice);
 		$tbody.append($tr);
 	});

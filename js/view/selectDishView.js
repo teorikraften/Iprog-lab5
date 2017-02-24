@@ -15,10 +15,8 @@ var SelectDishView = function (container, model) {
 	model.addObserver(this);
 	this.update = function(obj, filter) {
 		if(obj == 'main course' || obj == 'side dish' || obj == 'dessert') {
-			console.log(obj);
 			model.getAllDishes(obj, filter, function(dishes) {
-				$main.detach();
-				$main = $('<div/>').addClass('row');
+				parent.$main.empty();
 				for(var i = 0; i < dishes.totalResults; i++) {
 					var $column = $('<div/>').addClass("col-xs-6");
 					var $thumbnail = $('<div/>').addClass('thumbnail');
@@ -37,12 +35,12 @@ var SelectDishView = function (container, model) {
 					$thumbnail.append($caption);
 
 					$column.append($thumbnail);
-					$main.append($column);
+					parent.$main.append($column);
 					if( (i + 1) % 2 == 0) {
-						$main.append($("<div/>").addClass("clearfix"));
+						parent.$main.append($("<div/>").addClass("clearfix"));
 					}
 				}
-				parent.disherino.append($main);
+				parent.disherino.append(parent.$main);
 			});
 		}
 		//this.dishes.append($main);
@@ -54,8 +52,8 @@ var SelectDishView = function (container, model) {
 	var $panel_heading = $("<div/>").addClass("panel-heading").html("<h3>SELECT DISH</h3>");
 	var $panel_heading_row = $("<div/>").addClass("row");
 	var $panel_heading_row_col = $("<div/>").attr({class: "col-md-6", id: "search"});
-	var $panel_heading_row_col_input_grp = $("<div/>").addClass("input-group").html(
-		  							"<input id='searchDish' type='text' class='form-control' placeholder='Enter key words'>");
+	var $panel_heading_row_col_input_grp = $("<div/>").addClass("input-group");
+	this.$dishSearch = $("<input id='searchDish' type='text' class='form-control' placeholder='Enter key words'>");
 
 	var $dishTypeSelect = $("<div/>").attr({class: "col-md-6", id: "inputSelect"});
 	var $panel_body = $("<div/>").addClass("panel-body").attr("id", "dishes");
@@ -77,6 +75,7 @@ var SelectDishView = function (container, model) {
   	$panel_heading_row.append($dishTypeSelect);
 
   	$panel_heading_row_col.append($panel_heading_row_col_input_grp);
+  	$panel_heading_row_col_input_grp.append(this.$dishSearch);
   	$panel_heading_row.append($panel_heading_row_col);
   	$panel_heading.append($panel_heading_row);
   	$panel.append($panel_heading);
@@ -91,8 +90,8 @@ var SelectDishView = function (container, model) {
   	this.$loading.hide();
   	this.disherino.append(this.$loading);
 
-  	var $main = $('<div/>').addClass('row');
-  	this.disherino.append($main);
+  	this.$main = $('<div/>').addClass('row');
+  	this.disherino.append(this.$main);
   	$panel_body.append(this.disherino);
 
 
@@ -119,9 +118,9 @@ var SelectDishView = function (container, model) {
 			$thumbnail.append($caption);
 
 			$column.append($thumbnail);
-			$main.append($column);
+			parent.$main.append($column);
 			if( (i + 1) % 2 == 0) {
-				$main.append($("<div/>").addClass("clearfix"));
+				parent.$main.append($("<div/>").addClass("clearfix"));
 			}
 		}
   	});
