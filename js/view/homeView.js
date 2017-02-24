@@ -20,7 +20,7 @@ var HomeView = function (container, model) {
 	this.$jumbotron = $('<div/>').addClass("jumbotron");
 	$h1 = $('<h1/>').html("The number one page for planning dinner");
 	$p1 = $('<p/>').html("Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum...");
-	$button = $('<button/>').attr({
+	this.$button = $('<button/>').attr({
 		type: "button",
 		class: "btn btn-primary btn-lg",
 		id: "homeButton"
@@ -28,6 +28,6 @@ var HomeView = function (container, model) {
 
 	this.$jumbotron.append($h1);
 	this.$jumbotron.append($p1);
-	this.$jumbotron.append($button);
+	this.$jumbotron.append(this.$button);
 	container.append(this.$jumbotron);
 }
