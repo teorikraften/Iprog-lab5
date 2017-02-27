@@ -1,6 +1,6 @@
 <div class="row">
 <!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+<ng-include src="'partials/dinner-sidebar.html'"></ng-include>
 
 <!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
 not support it in free version) and list all the dishes that match the search. -->
@@ -21,11 +21,12 @@ not support it in free version) and list all the dishes that match the search. -
 				<div class="col-md-6">
 					<div class="input-group">
 						<input ng-model="query" id="searchDish" type="text" class="form-control" placeholder="Enter key words"/>
-						<div class="input-group-btn">
-							<button ng-click="search(query,type)" type="submit" class="btn btn-default">
-								<i class="glyphicon glyphicon-search"></i>
+						<span class="input-group-btn">
+							<button ng-click="search(query,type)" type="submit" class="btn btn-secondary">
+								<span class="glyphicon glyphicon-search"></span>
+								Search
 							</button>
-						</div>
+						</span>
 					</div>
 					{{status}}
 				</div>
