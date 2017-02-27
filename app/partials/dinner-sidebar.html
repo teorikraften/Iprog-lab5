@@ -20,7 +20,7 @@ this with Total price of the menu -->
 					<i class="glyphicon glyphicon-minus"></i>
 				</button>
 			</span>
-			<input disabled type="text" value="{{getNumberOfGuests()}}" style="width:40px; height: auto;" class= "form-control">
+			<input disabled type="text" value="{{getNumberOfGuests()}}" style="width:45px; height: auto;" class= "form-control">
 			<span class="input-group-btn">
 				<button ng-click="setNumberOfGuest(getNumberOfGuests()+1)" class="btn btn-success btn-sm">
 					<i class="glyphicon glyphicon-plus"></i>
@@ -32,6 +32,9 @@ this with Total price of the menu -->
 		<thead>
 			<tr>
 				<th>Dish Name</th>
+				<div ng-repeat="dish in getFullMenu()">
+					<p>{{dish.title}}</p>
+				</div>
 				<th>Cost</th>
 			</tr>
 		</thead>
