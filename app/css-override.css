@@ -48,14 +48,16 @@ html {
           justify-content : center;
 }
 
-.thumbnail > img {
-    height: 300px;
-    width: auto;
+.thumbnail {
+    position: relative;
+    height: 40vh;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
-.jumbotron {
-   display: table-cell;
-   vertical-align: middle;
+.thumbnail img {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 #sidebar {
@@ -143,6 +145,8 @@ html {
 
 .jumbotron {
     background-color: #ffe9be;
+    display: table-cell;
+   vertical-align: middle;
 }
 
 body {
@@ -150,5 +154,37 @@ body {
 }
 
 .nav-tabs > li.active > a{
-background-color:  #FFF7CE
+    background-color:  #FFF7CE
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%; 
+    text-align:center;
+    opacity:0;
+    -webkit-transition: opacity .25s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: inherit;
+}
+
+.overlay span > a{
+    font-size: 40px;
+    text-shadow: 2px 2px 4px #000000;
+    color: white;
+    text-decoration: none;
+}
+
+.col-xs-6:hover .overlay {
+    opacity:1;
+}
+
+.col-xs-6:hover .thumbnail {
+    filter:blur(3px);
 }

@@ -35,13 +35,12 @@ not support it in free version) and list all the dishes that match the search. -
 			<div class="row">
 				<!-- load dishes here -->
 				<div ng-repeat="dish in dishes" class="col-xs-6">
-					<div class="thumbnail">
-						<img ng-src="{{baseUri}}{{dish.image}}" class="img-responsive img-rounded"/>
-						<div class="caption">
-							<h3>
-								<a ng-href="#/dish/{{dish.id}}">{{dish.title}}</a>
-							</h3>
-						</div>
+					<div class="thumbnail" style="background-image:url({{baseUri}}{{dish.image}});">
+					</div>
+					<div class="overlay">
+						<span>
+							<a ng-href="#/dish/{{dish.id}}">{{dish.title}}</a>
+						</span>
 					</div>
 				</div>
 			</div>
