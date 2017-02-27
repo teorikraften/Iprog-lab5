@@ -16,15 +16,13 @@ this with Total price of the menu -->
 		<u>Number of guests: <b>{{getNumberOfGuests()}}</b></u> 
 		<div class="input-group" style="width:160px;">
 			<span class="input-group-btn">
-				<button ng-click="setNumberOfGuest">
+				<button ng-click="setNumberOfGuest(getNumberOfGuests()-1)">
 					a
 				</button>
 			</span>
-			<input type="number" ng-model="numberOfGuests" disabled="" type="text" style="width:140px;height:auto" class="form-control" id="guestNumber" value="2">
+			<input type="number" value="{{getNumberOfGuests()}}" disabled="">
 				<span class="input-group-btn">
-					<button ng-click="setNumberOfGuest()">
-					b
-					</button>
+					<button ng-click="setNumberOfGuest(getNumberOfGuests()+1)">helloooo</button>
 				</span>
 		</div>
 	</p>
