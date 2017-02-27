@@ -1,5 +1,40 @@
+<div class="row">
 <!-- We include the sidebar as it is shared across two screens. -->
 <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
 
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
+<div class="col-md-9">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="media-heading">{{dish.title}}</h3>
+			<span class="badge">Servings: {{getNumberOfGuests()}}</span>
+		</div>
+		<div class="panel-body">
+				<div class="row" style="display: block;">
+					<div class="col-md-7">
+						<div class="media">
+							<div class="media-left">
+								<img class="media-object img-rounded" style="width:150px;height:150px" src="https://spoonacular.com/recipeImages/Garlicky-Pasta-with-Swiss-Chard-and-Beans-482788.jpg">
+							</div>
+							<div class="media-body">
+								{{dish.summary}}
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="panel panel-default">
+							<div class="panel-heading">Ingredients</div>
+							<div class="panel-body">
+								<ul class="list-group">
+								</ul>
+							</div>
+						</div>
+						<button type="button" class="btn btn-primary btn-lg" id="addDish">Add to menu</button>
+						<button type="button" class="btn btn-primary btn-lg pull-right" id="back">Back</button>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>	
+</div>
