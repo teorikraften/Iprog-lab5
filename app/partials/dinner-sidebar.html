@@ -32,10 +32,13 @@ this with Total price of the menu -->
 		<thead>
 			<tr>
 				<th>Dish Name</th>
-				<div ng-repeat="dish in getFullMenu()">
-					<p>{{dish.title}}</p>
-				</div>
 				<th>Cost</th>
+			</tr>
+			<tr ng-repeat="dish in getFullMenu()">
+				<td>
+					<a ng-href="#/dish/{{dish.id}}">{{dish.title}}</a>
+				</td>
+				<td>{{ getDishPrice(dish.id) | currency }}</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -48,7 +51,7 @@ this with Total price of the menu -->
 					<b>Total</b>
 				</td>
 				<td>
-					<b>0 SEK</b>
+					<b>{{ getTotalMenuPrice() | currency }}</b>
 				</td>
 			</tr>
 		</tfoot>
