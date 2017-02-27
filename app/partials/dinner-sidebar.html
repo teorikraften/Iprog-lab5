@@ -1,4 +1,4 @@
-People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+<!-- People: <input type="number" ng-model="dick" ng-change="setNumberOfGuest(dick)"/> -->
 
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 
@@ -6,4 +6,49 @@ People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGue
 <!-- Displaying number of guests both in input box and here is redundant. It is here only for the example
 purpose so you can see how some information from the model can be retrieved. In Lab 5 you will replace 
 this with Total price of the menu -->
-Total number of guest: {{getNumberOfGuests()}}
+<!-- Total number of guest: {{getNumberOfGuests()}} -->
+
+
+
+<div class="col-md-3 well" ng-controller="DinnerCtrl">
+	<p>
+		<h3>My dinner</h3> 
+		<u>Number of guests: <b>{{getNumberOfGuests()}}</b></u> 
+		<div class="input-group" style="width:160px;">
+			<span class="input-group-btn">
+				<button ng-click="setNumberOfGuest">
+					a
+				</button>
+			</span>
+			<input type="number" ng-model="numberOfGuests" disabled="" type="text" style="width:140px;height:auto" class="form-control" id="guestNumber" value="2">
+				<span class="input-group-btn">
+					<button ng-click="setNumberOfGuest()">
+					b
+					</button>
+				</span>
+		</div>
+	</p>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Dish Name</th>
+				<th>Cost</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr class="success">
+				<td>
+					<b>Total</b>
+				</td>
+				<td>
+					<b>0 SEK</b>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	<button class="btn btn-block" id="checkout">Checkout</button>
+</div>
