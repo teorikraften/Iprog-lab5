@@ -9,7 +9,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.menu = [];
 
   this.setNumberOfGuests = function(num) {
-    this.guests = num;
+    if(num > 0) {
+      this.guests = num;
+    }
   }
 
   this.getNumberOfGuests = function() {
