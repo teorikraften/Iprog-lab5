@@ -10,34 +10,33 @@ Instructions, Ingredients and total cost. -->
 			<h3 class="media-heading">{{dish.title}}{{status}}</h3>
 		</div>
 		<div class="panel-body">
-				<div class="row" style="display: block;">
+			<div ng-bind-html="successMessage" ng-show="showSuccess" class="alert alert-success text-center fade out"></div>
+				<div class="row">
 					<div class="col-md-7">
 						<div class="media">
 							<div class="media-left">
 								<img class="media-object img-rounded" style="width:150px;height:150px" ng-src="{{dish.image}}">
 							</div>
 							<div class="media-body">
-								<p ng-bind-html="dish.summary"></p>
+								<p ng-bind-html="summary"></p>
 								{{summaryStatus}}
 							</div>
 						</div>
 					</div>
-					<div class="col-md-5">
+					<div ng-show="loaded" class="col-md-5">
 						<div class="panel panel-default">
 							<div class="panel-heading">Ingredients for <b>{{getNumberOfGuests()}}</b> guests</div>
-							<div class="panel-body">
-								<ul class="list-group">
-									<li ng-repeat="ingredient in dish.extendedIngredients" class="list-group-item">
-										{{ingredient.name}}
-										<span class="badge" data-toggle="tooltip" title="{{ingredient.unitLong}}">
-											{{getNumberOfGuests() * ingredient.amount}}{{ingredient.unitShort}}
-										</span>
-									</li>
-								</ul>
-							</div>
+							<ul class="list-group">
+								<li ng-repeat="ingredient in dish.extendedIngredients" class="list-group-item">
+									{{ingredient.name}}
+									<span class="badge" data-toggle="tooltip" title="{{ingredient.unitLong}}">
+										{{getNumberOfGuests() * ingredient.amount}}{{ingredient.unitShort}}
+									</span>
+								</li>
+							</ul>
 						</div>
-						<button type="button" class="btn btn-primary btn-lg" id="addDish">Add to menu</button>
-						<button type="button" class="btn btn-primary btn-lg pull-right" id="back">Back</button>
+						<button ng-click="addDishToMenu(dish)" class="btn btn-primary btn-lg">Add to menu</button>
+						<button back class="btn btn-primary btn-lg pull-right">Back</button>
 					</div>
 				</div>
 			</div>

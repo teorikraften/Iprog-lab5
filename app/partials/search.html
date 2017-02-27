@@ -9,21 +9,25 @@ not support it in free version) and list all the dishes that match the search. -
 		<div class="panel-heading">
 			<h3>SELECT DISH</h3>
 			<div class="row">
-				<div class="col-md-6" id="inputSelect">
+				<div class="col-md-6">
 					<div class="form-group">
-						<select ng-model="type" name="dishType" ng-change="search(query,type)" class="form-control" id="sel1">
-							<option value="main course">Main courses</option>
+						<select ng-model="type" ng-change="search(query,type)" ng-init="type='main course'" class="form-control" id="sel1">
+							<option value="main course" selected>Main courses</option>
 							<option value="side dish">Side dishes</option>
 							<option value="dessert">Desserts</option>
 						</select>
 					</div>
 				</div>
-				<div class="col-md-6" id="search">
+				<div class="col-md-6">
 					<div class="input-group">
 						<input ng-model="query" id="searchDish" type="text" class="form-control" placeholder="Enter key words"/>
-						{{status}}
-						<button ng-click="search(query,type)">Search</button>
+						<div class="input-group-btn">
+							<button ng-click="search(query,type)" type="submit" class="btn btn-default">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
 					</div>
+					{{status}}
 				</div>
 			</div>
 		</div>
