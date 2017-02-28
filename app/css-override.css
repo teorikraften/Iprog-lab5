@@ -119,16 +119,14 @@
     text-align: center;
 }
 
-.btn {
+.btn-theme {
     background-color: #FFBB82;
     color: black;
-    border: 2px solid #FFBB82;
 }
 
-.btn:hover {
+.btn-theme:hover {
     background-color: #FFA458;
     color: black;
-    border: 2px solid #FFA458;
 }
 
 * {
