@@ -1,0 +1,9 @@
+<div class="page-header" id="navbar-container" ng-controller="NavbarCtrl">
+	<h1>HOMELETTE</h1>
+	<ul class="nav nav-tabs">
+		<li ng-class="{ active: isActive('/search') }"><a href="#/search">Home</a></li>
+		<li ng-class="{ active: isActive('/overview') }"><a href="#/overview">Overview</a></li>
+		<li ng-class="{ active: isActive('/dish') }"><a>Dishes</a></li>
+		<li ng-class="{ active: isActive('/instructions') }"><a href="#/instructions">Instructions</a></li>
+	</ul>
+</div>
