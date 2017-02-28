@@ -37,6 +37,9 @@ this with Total price of the menu -->
 			<tr ng-repeat="dish in getFullMenu()">
 				<td>
 					<a ng-href="#/dish/{{dish.id}}">{{dish.title}}</a>
+					<button ng-click="removeDishFromMenu(dish.id)" class="btn btn-sm remove-button" style="margin-right:5px">
+						<i class="glyphicon glyphicon-remove"></i>
+					</button>
 				</td>
 				<td>{{ getDishPrice(dish.id) | currency }}</td>
 			</tr>
