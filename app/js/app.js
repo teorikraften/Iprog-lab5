@@ -37,25 +37,26 @@ var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngCookies', 'ngRoute','
 dinnerPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/home', {
+      when('/home/', {
         templateUrl: 'partials/home.html'
       }).
-      when('/search', {
+      when('/search/', {
         templateUrl: 'partials/search.html',
         controller: 'SearchCtrl'
       }).
-      when('/dish/:dishId', {
+      when('/dish/:dishId/', {
         templateUrl: 'partials/dish.html',
         controller: 'DishCtrl'
       }).
-      when('/overview', {
+      when('/overview/', {
         templateUrl: 'partials/overview.html'
       }).
-      when('/instructions', {
-        templateUrl: 'partials/instructions.html'
+      when('/instructions/', {
+        templateUrl: 'partials/instructions.html',
+        controller: 'InstructionCtrl'
       }).
       otherwise({
-        redirectTo: '/home'
+        redirectTo: '/home/'
       });
   }]);
 
@@ -70,3 +71,15 @@ dinnerPlannerApp.directive('back', ['$window', function($window) {
             }
         };
     }]);
+
+dinnerPlannerApp.service('menuSharing', function() {
+  var menu = [];
+  return {
+    getMenu: function() {
+      return menu;
+    },
+    setMenu: function(val) {
+      menu = val;
+    }
+  };
+});

@@ -13,16 +13,16 @@ this with Total price of the menu -->
 <div class="col-md-3 well" ng-controller="DinnerCtrl">
 	<p>
 		<h3>My dinner</h3> 
-		<u>Number of guests: <b>{{getNumberOfGuests()}}</b></u> 
+		<u>Number of guests</u> 
 		<div class="input-group" style="width:60px;">
 			<span class="input-group-btn">
-				<button ng-click="setNumberOfGuest(getNumberOfGuests()-1)" class="btn btn-danger">
+				<button ng-click="setNumberOfGuest(numberOfGuests-1)" class="btn btn-danger">
 					<i class="glyphicon glyphicon-minus"></i>
 				</button>
 			</span>
-			<input disabled type="text" value="{{getNumberOfGuests()}}" style="width:45px; height: auto;" class= "form-control">
+			<input disabled type="text" value="{{numberOfGuests}}" style="width:45px; height: auto;" class= "form-control">
 			<span class="input-group-btn">
-				<button ng-click="setNumberOfGuest(getNumberOfGuests()+1)" class="btn btn-success">
+				<button ng-click="setNumberOfGuest(numberOfGuests+1)" class="btn btn-success">
 					<i class="glyphicon glyphicon-plus"></i>
 				</button>
 			</span>

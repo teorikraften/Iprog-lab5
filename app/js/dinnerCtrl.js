@@ -1,8 +1,10 @@
 // Dinner controller that we use whenever we have view that needs to 
 // display or modify the dinner menu
-dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$timeout) {
+dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$timeout,menuSharing) {
 
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
+  $scope.menu = Dinner.getFullMenu();
+  menuSharing.setMenu($scope.menu);
 
   $scope.setNumberOfGuest = function(number){
     Dinner.setNumberOfGuests(number);
@@ -35,10 +37,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$timeout) {
 
   $scope.getDishPrice = function(id) {
   	return Dinner.getDishPrice(id);
-  }
-
-  $scope.getDishInstructions = function(dishID) {
-    return Dinner.DishInstructions.get({id:dishID});
   }
 
 });

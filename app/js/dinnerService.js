@@ -128,7 +128,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
   // returns a json object with stepwise instructions
   this.DishInstructions = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/analyzedInstructions', {}, {
-    get: {
+    query: {
+      method: 'GET',
+      isArray: true,
       headers: {
         'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'        
       }
