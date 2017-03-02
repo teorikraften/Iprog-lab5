@@ -37,4 +37,8 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$timeout) {
   	return Dinner.getDishPrice(id);
   }
 
+  $scope.getDishInstructions = function(dishID) {
+    return Dinner.DishInstructions.get({id:dishID});
+  }
+
 });
