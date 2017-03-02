@@ -3,14 +3,37 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource) {
+dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
+
+  var parent = this;
+
+    // example call: Dinner.Dish.get({id:583901}).
+  this.Dish = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/information',{},{
+    get: {
+      headers: {
+        'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+      }
+    }
+  });
+
+  this.getMenuFromId = function(menu) {
+    menu.forEach(function(dishId, i) {
+      parent.Dish.get({id: dishId}, function(dish) {
+        menu[i] = dish;
+      });
+    });
+    return menu;
+  }
   
-  this.guests = 1;
-  this.menu = [];
+  this.guests = $cookieStore.get("guests") || 1;
+  this.menu = this.getMenuFromId($cookieStore.get("menu")) || [];
+
+  console.log(this.menu);
 
   this.setNumberOfGuests = function(num) {
     if(num > 0) {
       this.guests = num;
+      $cookieStore.put("guests", this.guests);
     }
   }
 
@@ -69,6 +92,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     if(!exists) {
       this.menu.push(newDish);
+      $cookieStore.put("menu", _.pluck(this.menu, "id"));
     } 
   }
 
@@ -76,7 +100,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.removeDishFromMenu = function(id) {
     this.menu.forEach(function(dish, i, menu) {
       if(id == dish.id) {
-        menu.splice(i, 1);  
+        menu.splice(i, 1);
+        $cookieStore.put("menu", _.pluck(menu, "id"));  
       }
     });
   }
@@ -90,14 +115,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     }
   });
 
-  // example call: Dinner.Dish.get({id:583901}).
-  this.Dish = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/information',{},{
-    get: {
-      headers: {
-        'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-      }
-    }
-  });
+
 
   // get a summary of the dish (used in dishInformation view)
   this.DishSummary = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/summary', {}, {
@@ -115,7 +133,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'        
       }
     }
-  })
+  });
+
 
   this.getDishPrice = function (ID) {
     var price = 0;
@@ -128,7 +147,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     });
     return price*this.getNumberOfGuests();
   }
-
 
   // TODO in Lab 5: Add your model code from previous labs
   // feel free to remove above example code
