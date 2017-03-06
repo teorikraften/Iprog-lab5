@@ -7,28 +7,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
   var parent = this;
 
-    // example call: Dinner.Dish.get({id:583901}).
-  this.Dish = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/information',{},{
-    get: {
-      headers: {
-        'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-      }
-    }
-  });
-
-  this.getMenuFromId = function(menu) {
-    menu.forEach(function(dishId, i) {
-      parent.Dish.get({id: dishId}, function(dish) {
-        menu[i] = dish;
-      });
-    });
-    return menu;
-  }
-  
-  this.guests = $cookieStore.get("guests") || 1;
-  this.menu = this.getMenuFromId($cookieStore.get("menu")) || [];
-
-  console.log(this.menu);
+  this.guests = 1;
+  this.menu = [];
 
   this.setNumberOfGuests = function(num) {
     if(num > 0) {
@@ -115,8 +95,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     }
   });
 
-
-
   // get a summary of the dish (used in dishInformation view)
   this.DishSummary = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/summary', {}, {
     get: {
@@ -136,6 +114,26 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
       }
     }
   });
+
+      // example call: Dinner.Dish.get({id:583901}).
+  this.Dish = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/information',{},{
+    get: {
+      headers: {
+        'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+      }
+    }
+  });
+
+  this.getMenuFromId = function(menu) {
+    if(menu != undefined) {
+    menu.forEach(function(dishId, i) {
+      parent.Dish.get({id: dishId}, function(dish) {
+        menu[i] = dish;
+      });
+    });
+    }
+    return menu;
+  }
 
 
   this.getDishPrice = function (ID) {
@@ -157,7 +155,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
   // check lab 5 instructions for details
 
 
+  this.guests = $cookieStore.get("guests") || 1;
+  this.menu = this.getMenuFromId($cookieStore.get("menu")) || [];
 
+  console.log(this.menu);
 
 
   // Angular service needs to return an object that has all the
